@@ -1,7 +1,6 @@
 package htf.backend.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -14,10 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-public class Member { 
-	private @Id @GeneratedValue Long mem_key; 
-	private String mem_id;
-	private String mem_pw;
-	private String mem_rank;
-	private @ManyToOne Admin ad_id;
-} 
+public class Machine {
+	private @Id String mch_id;
+	private @ManyToOne Member mem_key;
+	private String description;
+}

@@ -14,10 +14,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-public class Member { 
-	private @Id @GeneratedValue Long mem_key; 
-	private String mem_id;
-	private String mem_pw;
-	private String mem_rank;
-	private @ManyToOne Admin ad_id;
-} 
+public class Measure {
+	private @Id @GeneratedValue Long measure_id;
+	private @ManyToOne Machine mch_id;
+	private String mchcd;
+	private String param;
+	private String value;
+	private String created;
+	private String modified;  
+}
