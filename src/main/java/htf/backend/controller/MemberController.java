@@ -28,17 +28,17 @@ public class MemberController {
 	}
 
 	@RequestMapping("/getMemberList")
-	public String getMemberList(@ModelAttribute("member") Member member, Model model, Admin admin) {
-
+	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model, Admin admin) {
+		member.setMem_id("asd");
 		if (member.getMem_id() == null) {
-			return "redirect:login.html";
+//			return "redirect:login.html";
 		}
 
 		List<Member> memberList = memberService.getMemberList(member);
 
 		System.out.println(memberList);
 		model.addAttribute("memberList", memberList);
-		return "getMemberList";
+		return memberList;
 	}
 
 	@GetMapping("/insertMember")
