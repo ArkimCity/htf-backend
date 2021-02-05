@@ -22,8 +22,8 @@ public class LoadDatabase {
 	CommandLineRunner initDatabase(MemberRepository repository) {
 
 		return args -> {
-			log.info("Preloading " + repository.save(new Member(11L, "sh", "11", "silver", new Admin("ad", "11"))));
-			log.info("Preloading " + repository.save(new Member(12L, "om", "11", "silver", new Admin("ad", "11"))));
+			log.info("Preloading " + repository.save(new Member(11L, "sh", "11", "silver")));
+			log.info("Preloading " + repository.save(new Member(12L, "om", "11", "silver")));
 		};
 	}
 }

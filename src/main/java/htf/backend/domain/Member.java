@@ -17,5 +17,5 @@ public class Member {
 	private String mem_id;
 	private String mem_pw;
 	private String mem_rank;
-	private Admin ad_id;
+//	private Admin ad_id;
 } 
