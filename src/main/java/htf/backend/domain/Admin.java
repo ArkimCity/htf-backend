@@ -1,8 +1,8 @@
 package htf.backend.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Admin { 
-	private @Id String ad_id; 
-	private String ad_pw;
+	private @Id @Column(name="ad_id") String adId; 
+	private @Column(name="ad_pw") String adPw;
 } 
  

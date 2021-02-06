@@ -25,7 +25,7 @@ public class LoadDatabase {
 		return args -> {
 			log.info("Preloading " + adminRepository.save(new Admin("asd","sad")));
 			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad")));
-			
+			 
 		};
 	}
 	@Bean
