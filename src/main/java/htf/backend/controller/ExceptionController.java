@@ -11,7 +11,7 @@ import htf.backend.exception.MemberNotFoundException;
 
 @Controller
 public class ExceptionController {
-
+	
 	@RequestMapping("/memberError")
 	public String boardError() {
 		throw new MemberNotFoundException("검색된 게시글이 없습니다.");

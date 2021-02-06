@@ -33,7 +33,6 @@ public class LoadDatabase {
  
 		return args -> {
 			log.info("Preloading " + meberRepository.save(new Member(11L, "sh", "11", "silver", new Admin("a2sd","sad"))));
-			log.info("Preloading " + meberRepository.save(new Member(11L, "sh", "11", "silver", new Admin("a2sd","sad"))));
 			log.info("Preloading " + meberRepository.save(new Member(12L, "om", "11", "silver", new Admin("asd","sad"))));
 			
 		};

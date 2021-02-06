@@ -11,7 +11,7 @@ import htf.backend.domain.Member;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	
+
 	@Autowired
 	private MemberRepository memberRepo;
 
@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 		Optional<Member> findMember = memberRepo.findById(member.getMem_key());
 		if (findMember.isPresent()) {
 			return findMember.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -34,11 +34,22 @@ public class MemberServiceImpl implements MemberService {
 
 	public void updateMember(Member member) {
 		Member findMember = memberRepo.findById(member.getMem_key()).get();
-		findMember.setMem_pw(member.getMem_pw());
+		findMember.setMemPw(member.getMemPw());
 		memberRepo.save(findMember);
 	}
 
 	public void deleteMember(Member member) {
 		memberRepo.deleteById(member.getMem_key());
+	}
+
+	@Override
+	public Member signIn(String id, String pw) {
+		Member member = memberRepo.findByMemId(id);
+//		Objects.requireNonNull(member, SIGNIN_EXCEPTION_MSG);
+//		
+//		if (!this.isAccordPassword(member, password)) {
+//			throw new IllegalStateException(SIGNIN_EXCEPTION_MSG);
+//		}
+		return member;
 	}
 }

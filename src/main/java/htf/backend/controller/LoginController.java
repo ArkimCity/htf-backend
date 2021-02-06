@@ -1,39 +1,45 @@
 package htf.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.bind.annotation.RestController;
 
+import htf.backend.dao.MemberRepository;
 import htf.backend.domain.Member;
+import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
 
-@SessionAttributes("member")
-@Controller
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
 public class LoginController {
-	@Autowired
-	private MemberService memberService;
 
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(Member member, Model model) {
-		Member findMember = memberService.getMember(member);
+    @Autowired
+    private MemberRepository memberRepository;
+    @Autowired
+    private MemberService memberService;
+    @Autowired
+    private JWTService jwtService;
 
-		if (findMember != null && findMember.getMem_pw().equals(member.getMem_pw())) {
-			model.addAttribute("member", findMember);
-			return "forward:getBoardList";
-		} else {
-			return "redirect:login.html";
-		}
-	}
-
-	@GetMapping("/logout")
-	public String logout(SessionStatus status) {
-		status.setComplete();
-		return "redirect:index.html";
-	}
-
+    @PostMapping(path = "/login")
+    public String login(@RequestBody Member member) {
+    	Member loginMember;
+        try {
+        	loginMember = memberService.signIn(member.getMemId(), member.getMemPw());
+            String token = jwtService.create("member", loginMember, "user");
+            return token;
+        } catch(Exception e) {
+            return "failed";
+        }
+    }
+    
 }

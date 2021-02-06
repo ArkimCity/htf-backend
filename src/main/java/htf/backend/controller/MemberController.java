@@ -29,8 +29,8 @@ public class MemberController {
 
 	@RequestMapping("/getMemberList")
 	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model, Admin admin) {
-		member.setMem_id("asd");
-		if (member.getMem_id() == null) {
+		member.setMemId("asd");
+		if (member.getMemId() == null) {
 //			return "redirect:login.html";
 		}
 
@@ -43,7 +43,7 @@ public class MemberController {
 
 	@GetMapping("/insertMember")
 	public String insertMemberView(@ModelAttribute("member") Member member) {
-		if (member.getMem_id() == null) {
+		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
 		return "insertMember";
@@ -51,7 +51,7 @@ public class MemberController {
 
 	@PostMapping("/insertMember")
 	public String insertMember(@ModelAttribute("member") Member member, Admin admin) {
-		if (member.getMem_id() == null) {
+		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
 		memberService.insertMember(member);
@@ -61,7 +61,7 @@ public class MemberController {
 
 	@GetMapping("/getMember")
 	public String getMember(@ModelAttribute("member")Member member, Admin admin, Model model) {
-		if (member.getMem_id() == null) {
+		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
 
@@ -71,7 +71,7 @@ public class MemberController {
 
 	@PostMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") Member member, Admin admin) {
-		if (member.getMem_id() == null) {
+		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
 
@@ -81,7 +81,7 @@ public class MemberController {
 
 	@GetMapping("/deleteMember")
 	public String deleteMember(@ModelAttribute("member") Member member, Admin admin) {
-		if (member.getMem_id() == null) {
+		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
 
