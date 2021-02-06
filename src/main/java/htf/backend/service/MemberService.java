@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	Member signIn(String id, String pw);
 	
+	Member findByMemId(String memId);
+	
 	List<Member> getMemberList(Member member);
 
 	void insertMember(Member member);

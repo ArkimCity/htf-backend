@@ -52,4 +52,9 @@ public class MemberServiceImpl implements MemberService {
 //		}
 		return member;
 	}
+
+	@Override
+	public Member findByMemId(String memId) {
+		return memberRepo.findByMemId(memId);
+	}
 }
