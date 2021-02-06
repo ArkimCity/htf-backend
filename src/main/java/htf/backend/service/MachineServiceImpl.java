@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import htf.backend.dao.MachineRepository;
-import htf.backend.domain.Admin;
 import htf.backend.domain.Machine;
 
 @Service

@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService {
 	private AdminRepository adminRepo;
 
 	public Admin getAdmin(Admin admin) {
-		Optional<Admin> findAdmin = adminRepo.findById(admin.getAd_id());
+		Optional<Admin> findAdmin = adminRepo.findById(admin.getAdId());
 		if (findAdmin.isPresent()) {
 			return findAdmin.get();
 		}else {
@@ -33,13 +33,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	public void updateAdmin(Admin admin) {
-		Admin findAdmin = adminRepo.findById(admin.getAd_id()).get();
-		findAdmin.setAd_pw(admin.getAd_pw());
+		Admin findAdmin = adminRepo.findById(admin.getAdId()).get();
+		findAdmin.setAdPw(admin.getAdPw());
 		adminRepo.save(findAdmin);
 	}
 
 	public void deleteAdmin(Admin admin) {
-		adminRepo.deleteById(admin.getAd_id());
+		adminRepo.deleteById(admin.getAdId());
+	}
+
+	@Override
+	public Admin signIn(String id, String pw) {
+		Admin admin = adminRepo.findByadId(id);
+		return admin;
 	}
 
 }
