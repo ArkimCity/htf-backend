@@ -38,7 +38,8 @@ public class MeasureController {
 	@CrossOrigin
 	@PostMapping("/getMeasureListByMchIdTo1")
 	public Measure getMeasureListByMchIdTo1(@RequestBody Machine machine){
-		return measureService.getMeasureByMchIdTo1(machineService.findByMchId(machine.getMchId()));
+		System.out.println(machineService.findByMchId(machine.getMchId()));
+		return measureService.getMeasureByMchIdTo1((machine.getMchId()));
 	}
 	
 }

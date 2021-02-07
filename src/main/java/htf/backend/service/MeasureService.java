@@ -14,5 +14,5 @@ public interface MeasureService {
 	
 	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
 	
-	Measure getMeasureByMchIdTo1(Machine mchId);
+	Measure getMeasureByMchIdTo1(String mchId);
 }

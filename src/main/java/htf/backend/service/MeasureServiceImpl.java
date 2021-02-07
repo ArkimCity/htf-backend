@@ -41,7 +41,7 @@ public class MeasureServiceImpl implements MeasureService {
 
 
 	@Override
-	public Measure getMeasureByMchIdTo1(Machine mchId) {
+	public Measure getMeasureByMchIdTo1(String mchId) {
 		return measureRepo.getMeasureByMchIdTo1(mchId);
 	}
 
