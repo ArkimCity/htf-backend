@@ -12,6 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
         "/login",
         "/getMachineListByMemId",
         "/getMeasureListByMchId",
+        "/getMeasureListByMchIdTo1",
+        "/getMeasureListByMchIdTo10",
         "/member/**",
         "/error/**"
     };

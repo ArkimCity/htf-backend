@@ -24,19 +24,19 @@ public class MeasureController {
 	private MachineService machineService;
 	
 	@CrossOrigin
-	@PostMapping("/getMeasureListByMchid")
+	@PostMapping("/getMeasureListByMchId")
 	public List<Measure> getMeasureListByMchId(@RequestBody Machine machine){
 		return measureService.getMeasureListByMchId(machineService.findByMchId(machine.getMchId()));
 	}
 	
 	@CrossOrigin
-	@PostMapping("/getMeasureListByMchidTo10")
+	@PostMapping("/getMeasureListByMchIdTo10")
 	public List<Measure> getMeasureListByMchIdTo10(@RequestBody Machine machine){
 		return measureService.getMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
 	}
 	
 	@CrossOrigin
-	@PostMapping("/getMeasureListByMchidTo1")
+	@PostMapping("/getMeasureListByMchIdTo1")
 	public Measure getMeasureListByMchIdTo1(@RequestBody Machine machine){
 		return measureService.getMeasureByMchIdTo1(machineService.findByMchId(machine.getMchId()));
 	}
