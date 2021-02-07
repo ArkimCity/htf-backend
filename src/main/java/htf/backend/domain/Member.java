@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Member { 
-	private @Id @GeneratedValue Long mem_key; 
+	private @Id @GeneratedValue @Column(name="mem_key")Long memKey; 
 	private @Column(name="mem_id") String memId;
 	private @Column(name="mem_pw") String memPw;
-	private String mem_rank;
-	private @ManyToOne Admin ad_id;
+	private @Column(name="mem_rank")String memRank;
+	private @ManyToOne Admin adId;
 	
 } 

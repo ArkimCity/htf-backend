@@ -17,7 +17,7 @@ public class MachineServiceImpl implements MachineService {
 	private MachineRepository machineRepo;
 
 	public Machine getMachine(Machine machine) {
-		Optional<Machine> findMachine = machineRepo.findById(machine.getMch_id());
+		Optional<Machine> findMachine = machineRepo.findById(machine.getMchId());
 		if (findMachine.isPresent()) {
 			return findMachine.get();
 		}else {
@@ -34,13 +34,13 @@ public class MachineServiceImpl implements MachineService {
 	}
 
 	public void updateMachine(Machine machine) {
-		Machine findMachine = machineRepo.findById(machine.getMch_id()).get();
+		Machine findMachine = machineRepo.findById(machine.getMchId()).get();
 		findMachine.setDescription(machine.getDescription());
 		machineRepo.save(findMachine);
 	}
 
 	public void deleteMachine(Machine machine) {
-		machineRepo.deleteById(machine.getMch_id());
+		machineRepo.deleteById(machine.getMchId());
 	}
 
 	@Override

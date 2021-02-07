@@ -1,5 +1,6 @@
 package htf.backend.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Machine {
-	private @Id String mch_id;
+	private @Id  @Column(name="mch_id")String mchId;
 	private @ManyToOne @JoinColumn(name="mem_id") Member memId;
 	private String description;
 }
