@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Machine {
-	private @Id  @Column(name="mch_id")String mchId;
+	private @Id  @Column(name="mch_id") String mchId;
 	private @ManyToOne @JoinColumn(name="mem_id") Member memId;
 	private String description;
 }
