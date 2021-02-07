@@ -22,5 +22,4 @@ public class Member {
 	private String mem_rank;
 	private @ManyToOne Admin ad_id;
 	
-	
 } 

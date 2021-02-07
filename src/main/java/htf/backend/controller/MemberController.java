@@ -4,17 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import htf.backend.domain.Admin;
+import htf.backend.domain.Machine;
 import htf.backend.domain.Member;
+import htf.backend.service.MachineService;
 import htf.backend.service.MemberService;
 
+@CrossOrigin
 @SessionAttributes("member")
 @RestController
 public class MemberController {
@@ -22,6 +27,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private MachineService machineService;
+	
 	@ModelAttribute("member")
 	public Member setMember() {
 		return new Member();
@@ -29,7 +37,7 @@ public class MemberController {
 
 	@RequestMapping("/getMemberList")
 	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model, Admin admin) {
-		member.setMemId("asd");
+//		member.setMemId("asd");
 		if (member.getMemId() == null) {
 //			return "redirect:login.html";
 		}
@@ -39,6 +47,13 @@ public class MemberController {
 		System.out.println(memberList);
 		model.addAttribute("memberList", memberList);
 		return memberList;
+	}
+	
+	
+	@CrossOrigin
+	@PostMapping("/getMachineListByMemId")
+	public List<Machine> getMachineListByMemId(@RequestBody Member member) {
+		return machineService.getMachineListByMemId(memberService.findByMemId(member.getMemId()));
 	}
 
 	@GetMapping("/insertMember")

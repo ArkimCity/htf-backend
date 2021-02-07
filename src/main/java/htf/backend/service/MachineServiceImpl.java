@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import htf.backend.dao.MachineRepository;
 import htf.backend.domain.Machine;
+import htf.backend.domain.Member;
 
 @Service
 public class MachineServiceImpl implements MachineService {
@@ -40,6 +41,11 @@ public class MachineServiceImpl implements MachineService {
 
 	public void deleteMachine(Machine machine) {
 		machineRepo.deleteById(machine.getMch_id());
+	}
+
+	@Override
+	public List<Machine> getMachineListByMemId(Member memId) {
+		return machineRepo.getMachineListByMemId(memId);
 	}
 
 }
