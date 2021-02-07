@@ -34,5 +34,16 @@ public class MeasureServiceImpl implements MeasureService {
 		return measureRepo.getMeasureListByMchId(mchId);
 	}
 
+	@Override
+	public List<Measure> getMeasureListByMchIdTo10(Machine mchId) {
+		return measureRepo.getMeasureListByMchIdTo10(mchId);
+	}
+
+
+	@Override
+	public Measure getMeasureByMchIdTo1(Machine mchId) {
+		return measureRepo.getMeasureByMchIdTo1(mchId);
+	}
+
 
 }

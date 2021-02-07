@@ -11,4 +11,8 @@ public interface MeasureService {
 	List<Measure> getMeasureList(Measure measure);
 	
 	List<Measure> getMeasureListByMchId(Machine mchId);
+	
+	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
+	
+	Measure getMeasureByMchIdTo1(Machine mchId);
 }

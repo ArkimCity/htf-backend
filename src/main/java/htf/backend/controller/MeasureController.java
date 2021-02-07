@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,21 @@ public class MeasureController {
 	private MachineService machineService;
 	
 	@CrossOrigin
+	@PostMapping("/getMeasureListByMchid")
 	public List<Measure> getMeasureListByMchId(@RequestBody Machine machine){
 		return measureService.getMeasureListByMchId(machineService.findByMchId(machine.getMchId()));
 	}
+	
+	@CrossOrigin
+	@PostMapping("/getMeasureListByMchidTo10")
+	public List<Measure> getMeasureListByMchIdTo10(@RequestBody Machine machine){
+		return measureService.getMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
+	}
+	
+	@CrossOrigin
+	@PostMapping("/getMeasureListByMchidTo1")
+	public Measure getMeasureListByMchIdTo1(@RequestBody Machine machine){
+		return measureService.getMeasureByMchIdTo1(machineService.findByMchId(machine.getMchId()));
+	}
+	
 }
