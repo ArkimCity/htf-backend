@@ -10,6 +10,10 @@ public class WebConfig implements WebMvcConfigurer {
     private static final String[] EXCLUDE_PATHS = {
         "/create",
         "/login",
+        "/getMachineListByMemId",
+        "/getMeasureListByMchId",
+        "/getMeasureListByMchIdTo1",
+        "/getMeasureListByMchIdTo10",
         "/member/**",
         "/error/**"
     };

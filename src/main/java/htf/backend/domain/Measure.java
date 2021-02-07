@@ -1,8 +1,10 @@
 package htf.backend.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -15,8 +17,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Measure {
-	private @Id @GeneratedValue Long measure_id;
-	private @ManyToOne Machine mch_id;
+	private @Id @GeneratedValue @Column(name="measure_id") Long measureId;
+	private @ManyToOne @JoinColumn(name="mch_id") Machine mchId;
 	private String mchcd;
 	private String param;
 	private String value;

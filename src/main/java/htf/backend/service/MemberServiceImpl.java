@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberRepository memberRepo;
 
 	public Member getMember(Member member) {
-		Optional<Member> findMember = memberRepo.findById(member.getMem_key());
+		Optional<Member> findMember = memberRepo.findById(member.getMemKey());
 		if (findMember.isPresent()) {
 			return findMember.get();
 		} else {
@@ -33,13 +33,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	public void updateMember(Member member) {
-		Member findMember = memberRepo.findById(member.getMem_key()).get();
+		Member findMember = memberRepo.findById(member.getMemKey()).get();
 		findMember.setMemPw(member.getMemPw());
 		memberRepo.save(findMember);
 	}
 
 	public void deleteMember(Member member) {
-		memberRepo.deleteById(member.getMem_key());
+		memberRepo.deleteById(member.getMemKey());
 	}
 
 	@Override
@@ -51,5 +51,8 @@ public class MemberServiceImpl implements MemberService {
 //			throw new IllegalStateException(SIGNIN_EXCEPTION_MSG);
 //		}
 		return member;
+	}
+	public Member findByMemId(String memId) {
+		return memberRepo.findByMemId(memId);
 	}
 }

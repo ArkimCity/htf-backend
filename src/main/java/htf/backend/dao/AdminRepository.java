@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import htf.backend.domain.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, String> {
-
+	Admin findByadId(String adId);
 }

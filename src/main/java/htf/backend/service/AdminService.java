@@ -8,6 +8,8 @@ public interface AdminService {
 
 	Admin getAdmin(Admin admin);
 	
+	Admin signIn(String id, String pw);
+	
 	List<Admin> getAdminList(Admin admin);
 	
 	void insertAdmin(Admin admin);

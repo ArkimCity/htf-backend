@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import htf.backend.dao.MachineRepository;
-import htf.backend.domain.Admin;
 import htf.backend.domain.Machine;
+import htf.backend.domain.Member;
 
 @Service
 public class MachineServiceImpl implements MachineService {
@@ -17,7 +17,7 @@ public class MachineServiceImpl implements MachineService {
 	private MachineRepository machineRepo;
 
 	public Machine getMachine(Machine machine) {
-		Optional<Machine> findMachine = machineRepo.findById(machine.getMch_id());
+		Optional<Machine> findMachine = machineRepo.findById(machine.getMchId());
 		if (findMachine.isPresent()) {
 			return findMachine.get();
 		}else {
@@ -34,13 +34,21 @@ public class MachineServiceImpl implements MachineService {
 	}
 
 	public void updateMachine(Machine machine) {
-		Machine findMachine = machineRepo.findById(machine.getMch_id()).get();
+		Machine findMachine = machineRepo.findById(machine.getMchId()).get();
 		findMachine.setDescription(machine.getDescription());
 		machineRepo.save(findMachine);
 	}
 
 	public void deleteMachine(Machine machine) {
-		machineRepo.deleteById(machine.getMch_id());
+		machineRepo.deleteById(machine.getMchId());
+	}
+
+	public List<Machine> getMachineListByMemId(Member memId) {
+		return machineRepo.getMachineListByMemId(memId);
+	}
+
+	public Machine findByMchId(String mchId) {
+		return machineRepo.findByMchId(mchId);
 	}
 
 }
