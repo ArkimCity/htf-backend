@@ -43,9 +43,12 @@ public class MachineServiceImpl implements MachineService {
 		machineRepo.deleteById(machine.getMchId());
 	}
 
-	@Override
 	public List<Machine> getMachineListByMemId(Member memId) {
 		return machineRepo.getMachineListByMemId(memId);
+	}
+
+	public Machine findByMchId(String mchId) {
+		return machineRepo.findByMchId(mchId);
 	}
 
 }

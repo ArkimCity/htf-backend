@@ -9,6 +9,8 @@ public interface MachineService {
 	
 	Machine getMachine(Machine machine);
 	
+	Machine findByMchId(String mchId);
+	
 	List<Machine> getMachineList(Machine machine);
 
 	List<Machine> getMachineListByMemId(Member memId);
