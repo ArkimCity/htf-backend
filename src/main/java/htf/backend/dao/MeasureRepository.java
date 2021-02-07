@@ -11,8 +11,8 @@ import htf.backend.domain.Measure;
 public interface MeasureRepository extends JpaRepository<Measure, Long> {
 	List<Measure> getMeasureListByMchId(Machine mchId);
 
-	@Query("select m from Measure m where rownum<11 order by m.created desc")
+	@Query("select m from Measure m where rownum<11 order by m.measureId desc")
 	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
-	@Query("select m from Measure m where rownum=1 order by m.created desc")
+	@Query(nativeQuery=true, value="select * from (select * from measure order by measure_id desc) where rownum=1")
 	Measure getMeasureByMchIdTo1(Machine mchId);
 }
