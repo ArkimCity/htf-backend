@@ -8,10 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     private static final String[] EXCLUDE_PATHS = {
+    	"/loginMember",
+    	"/insertAdmin",
         "/create",
-        "/login",
-        "/loginAdmin",
         "/member/**",
+        "/loginAdmin",
         "/error/**"
     };
  

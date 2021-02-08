@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import htf.backend.dao.MemberRepository;
+import htf.backend.domain.Admin;
 import htf.backend.domain.Member;
 
 @Service
@@ -56,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<Member> getMemberListByAdId(String adId) {
+	public List<Member> getMemberListByAdId(Admin adId) {
 		return memberRepo.getMemberListByAdId(adId);
 	}
 }

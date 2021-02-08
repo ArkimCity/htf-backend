@@ -2,6 +2,7 @@ package htf.backend.service;
 
 import java.util.List;
 
+import htf.backend.domain.Admin;
 import htf.backend.domain.Member;
 
 public interface MemberService {
@@ -20,6 +21,6 @@ public interface MemberService {
 
 	void deleteMember(Member member);
 
-	List<Member> getMemberListByAdId(String adId);
+	List<Member> getMemberListByAdId(Admin adId);
 
 }

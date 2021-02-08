@@ -45,7 +45,7 @@ public class MemberController {
 		if (admin == null) {
 			System.out.println(admin);
 		}
-		List<Member> memberList = memberService.getMemberListByAdId(admin.getAdId());
+		List<Member> memberList = memberService.getMemberListByAdId(admin);
 		System.out.println(memberList);
 		return memberList;
 	}

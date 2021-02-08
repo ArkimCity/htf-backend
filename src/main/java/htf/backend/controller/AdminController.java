@@ -4,15 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
 import htf.backend.service.AdminService;
 
+@CrossOrigin
 @RestController
 public class AdminController {
 
@@ -34,21 +37,13 @@ public class AdminController {
 		return adminList;
 	}
 
-	@GetMapping("/insertAdmin")
-	public String insertAdminView(@ModelAttribute("admin") Admin admin) {
-		if (admin.getAdId() == null) {
-			return "redirect:login";
-		}
-		return "insertAdmin";
-	}
-
 	@PostMapping("/insertAdmin")
-	public String insertAdmin(@ModelAttribute("admin") Admin admin) {
+	public String insertAdmin(@RequestBody Admin admin) {
 		if (admin.getAdId() == null) {
 			return "redirect:login";
 		}
 		adminService.insertAdmin(admin);
-		return "getAdminList";
+		return "insert succeded";
 	}
 
 	@GetMapping("/getAdmin")
