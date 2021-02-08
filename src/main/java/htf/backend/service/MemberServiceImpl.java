@@ -45,12 +45,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member signIn(String id, String pw) {
 		Member member = memberRepo.findByMemId(id);
-//		Objects.requireNonNull(member, SIGNIN_EXCEPTION_MSG);
-//		
-//		if (!this.isAccordPassword(member, password)) {
-//			throw new IllegalStateException(SIGNIN_EXCEPTION_MSG);
-//		}
-		return member;
+		if(pw == member.getMemPw()) {
+			return member;
+		}
+		return null;
 	}
 	public Member findByMemId(String memId) {
 		return memberRepo.findByMemId(memId);
