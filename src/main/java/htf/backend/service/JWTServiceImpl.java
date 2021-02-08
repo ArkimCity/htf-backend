@@ -97,10 +97,6 @@ public class JWTServiceImpl implements JWTService{
 				log.error(e.getMessage());
 			}
 			throw new UnauthorizedException();
-
-			/*개발환경!!!
-			 * return false;*/
-			 
 		}
 	}
 }

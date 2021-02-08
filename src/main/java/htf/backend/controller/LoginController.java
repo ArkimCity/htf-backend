@@ -10,7 +10,7 @@ import htf.backend.domain.Member;
 import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
 public class LoginController {
 
@@ -25,7 +25,7 @@ public class LoginController {
         try {
         	Member loginMember = memberService.findByMemId(member.getMemId());
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
-        		String token = jwtService.create("member", loginMember, "user");
+        		String token = jwtService.create(member.getMemId(), loginMember, "user");
         		response = token;
         	}
         } catch(Exception e) {
