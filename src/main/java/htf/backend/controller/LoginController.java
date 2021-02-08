@@ -25,7 +25,6 @@ public class LoginController {
 	@Autowired
 	private JWTService jwtService;
 
-	@CrossOrigin
 	@PostMapping(path = "/loginMember")
     public String loginMember(@RequestBody Member member) throws Exception {
     	String response = null;
@@ -42,7 +41,6 @@ public class LoginController {
 		return response;
     }
 	
-	@CrossOrigin
 	@PostMapping(path = "/loginAdmin")
 	public String loginAdmin(@RequestBody Admin admin) throws Exception {
     	String response = null;
