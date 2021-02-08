@@ -50,6 +50,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return null;
 	}
+	
 	public Member findByMemId(String memId) {
 		return memberRepo.findByMemId(memId);
 	}
