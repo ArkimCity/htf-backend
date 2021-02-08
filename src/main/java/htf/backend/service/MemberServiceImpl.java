@@ -54,4 +54,9 @@ public class MemberServiceImpl implements MemberService {
 	public Member findByMemId(String memId) {
 		return memberRepo.findByMemId(memId);
 	}
+
+	@Override
+	public List<Member> getMemberListByAdId(String adId) {
+		return memberRepo.getMemberListByAdId(adId);
+	}
 }

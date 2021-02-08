@@ -44,8 +44,13 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin signIn(String id, String pw) {
-		Admin admin = adminRepo.findByadId(id);
+		Admin admin = adminRepo.findByAdId(id);
 		return admin;
+	}
+
+	@Override
+	public Admin findByAdId(String adId) {
+		return adminRepo.findByAdId(adId);
 	}
 
 }

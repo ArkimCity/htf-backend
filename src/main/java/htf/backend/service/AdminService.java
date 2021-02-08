@@ -10,6 +10,8 @@ public interface AdminService {
 	
 	Admin signIn(String id, String pw);
 	
+	Admin findByAdId(String adId);
+	
 	List<Admin> getAdminList(Admin admin);
 	
 	void insertAdmin(Admin admin);

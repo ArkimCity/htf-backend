@@ -20,4 +20,6 @@ public interface MemberService {
 
 	void deleteMember(Member member);
 
+	List<Member> getMemberListByAdId(String adId);
+
 }
