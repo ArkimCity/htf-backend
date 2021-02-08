@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import htf.backend.domain.Admin;
 import htf.backend.domain.Member;
+import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
 
 @CrossOrigin
@@ -83,7 +84,7 @@ public class MemberController {
 			return "redirect:login";
 		}
 		memberService.updateMember(member);
-		return "forward:getMemberList";
+		return "updateMember";
 	}
 
 	@GetMapping("/deleteMember")
