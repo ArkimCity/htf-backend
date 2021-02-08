@@ -26,7 +26,7 @@ public class LoginController {
     public String login(@RequestBody Member member) throws Exception {
     	String response = null;
         try {
-        	Member loginMember = memberService.getMember(member);
+        	Member loginMember = memberService.signIn(member.getMemId(), member.getMemPw());
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
         		System.out.println("++++++++++++++++" + loginMember);
         		System.out.println("++++++++++++++++++++++" + member);
