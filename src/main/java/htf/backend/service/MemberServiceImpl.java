@@ -45,14 +45,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member signIn(String id, String pw) {
 		Member member = memberRepo.findByMemId(id);
-<<<<<<< Updated upstream
 		if(pw == member.getMemPw()) {
 			return member;
 		}
 		return null;
-=======
-		return member;
->>>>>>> Stashed changes
 	}
 	
 	public Member findByMemId(String memId) {
