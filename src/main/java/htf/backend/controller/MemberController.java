@@ -31,15 +31,15 @@ public class MemberController {
 		return new Member();
 	}
 
-	@RequestMapping("/getMemberList")
-	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model) {
-		if (member.getMemId() == null) {
-		}
-		List<Member> memberList = memberService.getMemberList(member);
-		System.out.println(memberList);
-		model.addAttribute("memberList", memberList);
-		return memberList;
-	}
+//	@RequestMapping("/getMemberList")
+//	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model) {
+//		if (member.getMemId() == null) {
+//		}
+//		List<Member> memberList = memberService.getMemberList(member);
+//		System.out.println(memberList);
+//		model.addAttribute("memberList", memberList);
+//		return memberList;
+//	}
 	
 	@PostMapping("/getMemberListByAdId")
 	public List<Member> getMemberListByAdId(@RequestBody Admin admin) {
@@ -51,13 +51,13 @@ public class MemberController {
 		return memberList;
 	}
 
-	@GetMapping("/insertMember")
-	public String insertMemberView(@ModelAttribute("member") Member member) {
-		if (member.getMemId() == null) {
-			return "redirect:login";
-		}
-		return "insertMember";
-	}
+//	@GetMapping("/insertMember")
+//	public String insertMemberView(@ModelAttribute("member") Member member) {
+//		if (member.getMemId() == null) {
+//			return "redirect:login";
+//		}
+//		return "insertMember";
+//	}
 
 	@PostMapping("/insertMember")
 	public String insertMember(@RequestBody Member member) {
@@ -69,14 +69,14 @@ public class MemberController {
 		return "redirect:getMemberList";
 	}
 
-	@GetMapping("/getMember")
-	public String getMember(@ModelAttribute("member")Member member, Model model) {
-		if (member.getMemId() == null) {
-			return "redirect:login";
-		}
-		model.addAttribute("member", memberService.getMember(member));
-		return "getMember";
-	}
+//	@GetMapping("/getMember")
+//	public String getMember(@ModelAttribute("member")Member member, Model model) {
+//		if (member.getMemId() == null) {
+//			return "redirect:login";
+//		}
+//		model.addAttribute("member", memberService.getMember(member));
+//		return "getMember";
+//	}
 
 	@PostMapping("/updateMember")
 	public String updateMember(@ModelAttribute("member") Member member) {
@@ -87,13 +87,13 @@ public class MemberController {
 		return "updateMember";
 	}
 
-	@GetMapping("/deleteMember")
-	public String deleteMember(@ModelAttribute("member") Member member) {
-		if (member.getMemId() == null) {
-			return "redirect:login";
-		}
-		memberService.deleteMember(member);
-		return "getMemberList";
-	}
+//	@GetMapping("/deleteMember")
+//	public String deleteMember(@ModelAttribute("member") Member member) {
+//		if (member.getMemId() == null) {
+//			return "redirect:login";
+//		}
+//		memberService.deleteMember(member);
+//		return "getMemberList";
+//	}
 
 }

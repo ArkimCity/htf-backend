@@ -27,15 +27,15 @@ public class AdminController {
 		return new Admin();
 	}
 
-	@RequestMapping("/getAdminList")
-	public List<Admin> getAdminList(@ModelAttribute("admin") Admin admin, Model model) {
-		if (admin.getAdId() == null) {//?
-		}
-		List<Admin> adminList = adminService.getAdminList(admin);
-		System.out.println(adminList);
-		model.addAttribute("adminList", adminList);
-		return adminList;
-	}
+//	@RequestMapping("/getAdminList")
+//	public List<Admin> getAdminList(@ModelAttribute("admin") Admin admin, Model model) {
+//		if (admin.getAdId() == null) {//?
+//		}
+//		List<Admin> adminList = adminService.getAdminList(admin);
+//		System.out.println(adminList);
+//		model.addAttribute("adminList", adminList);
+//		return adminList;
+//	}
 
 	@PostMapping("/insertAdmin")
 	public String insertAdmin(@RequestBody Admin admin) {
@@ -45,31 +45,31 @@ public class AdminController {
 		adminService.insertAdmin(admin);
 		return "insertAdmin";
 	}
+//
+//	@GetMapping("/getAdmin")
+//	public String getAdmin(@ModelAttribute("admin")Admin admin, Model model) {
+//		if (admin.getAdId() == null) {
+//			return "redirect:login";
+//		}
+//		model.addAttribute("admin", adminService.getAdmin(admin));
+//		return "getAdmin";
+//	}
 
-	@GetMapping("/getAdmin")
-	public String getAdmin(@ModelAttribute("admin")Admin admin, Model model) {
-		if (admin.getAdId() == null) {
-			return "redirect:login";
-		}
-		model.addAttribute("admin", adminService.getAdmin(admin));
-		return "getAdmin";
-	}
+//	@PostMapping("/updateAdmin")
+//	public String updateAdmin(@ModelAttribute("admin") Admin admin) {
+//		if (admin.getAdId() == null) {
+//			return "redirect:login";
+//		}
+//		adminService.updateAdmin(admin);
+//		return "getAdminList";
+//	}
 
-	@PostMapping("/updateAdmin")
-	public String updateAdmin(@ModelAttribute("admin") Admin admin) {
-		if (admin.getAdId() == null) {
-			return "redirect:login";
-		}
-		adminService.updateAdmin(admin);
-		return "getAdminList";
-	}
-
-	@GetMapping("/deleteAdmin")
-	public String deleteAdmin(@ModelAttribute("admin") Admin admin) {
-		if (admin.getAdId() == null) {
-			return "redirect:login";
-		}
-		adminService.deleteAdmin(admin);
-		return "getAdminList";
-	}
+//	@GetMapping("/deleteAdmin")
+//	public String deleteAdmin(@ModelAttribute("admin") Admin admin) {
+//		if (admin.getAdId() == null) {
+//			return "redirect:login";
+//		}
+//		adminService.deleteAdmin(admin);
+//		return "getAdminList";
+//	}
 }
