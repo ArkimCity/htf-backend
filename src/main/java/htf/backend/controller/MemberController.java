@@ -19,7 +19,6 @@ import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
 
 @CrossOrigin
-@SessionAttributes("member")
 @RestController
 public class MemberController {
 
