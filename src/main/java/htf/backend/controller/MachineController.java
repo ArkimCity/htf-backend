@@ -66,14 +66,14 @@ public class MachineController {
 //		return "getMachine";
 //	}
 
-//	@PostMapping("/updateMachine")
-//	public String updateMachine(@ModelAttribute("machine") Machine machine) {
-//		if (machine.getMchId() == null) {
-//			return "redirect:login";
-//		}
-//		machineService.updateMachine(machine);
-//		return "getMachineList";
-//	}
+	@PostMapping("/updateMachine")
+	public String updateMachine(@RequestBody Machine machine) {
+		if (machine.getMchId() == null) {
+			return "redirect:login";
+		}
+		machineService.updateMachine(machine);
+		return "getMachineList";
+	}
 
 //	@GetMapping("/deleteMachine")
 //	public String deleteMachine(@ModelAttribute("machine") Machine machine) {
