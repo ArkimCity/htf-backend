@@ -31,58 +31,58 @@ public class MachineController {
 		return new Machine();
 	}
 
-	@RequestMapping("/getMachineList")
-	public List<Machine> getMachineList(@ModelAttribute("machine") Machine machine, Model model) {
-		if (machine.getMchId() == null) {//?
-		}
-		List<Machine> machineList = machineService.getMachineList(machine);
-		model.addAttribute("machineList", machineList);
-		return machineList;
-	}
+//	@RequestMapping("/getMachineList")
+//	public List<Machine> getMachineList(@ModelAttribute("machine") Machine machine, Model model) {
+//		if (machine.getMchId() == null) {//?
+//		}
+//		List<Machine> machineList = machineService.getMachineList(machine);
+//		model.addAttribute("machineList", machineList);
+//		return machineList;
+//	}
 
-	@GetMapping("/insertMachine")
-	public String insertMachineView(@ModelAttribute("machine") Machine machine) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
-		return "insertMachine";
-	}
+//	@GetMapping("/insertMachine")
+//	public String insertMachineView(@ModelAttribute("machine") Machine machine) {
+//		if (machine.getMchId() == null) {
+//			return "redirect:login";
+//		}
+//		return "insertMachine";
+//	}
 
-	@PostMapping("/insertMachine")
-	public String insertMachine(@ModelAttribute("machine") Machine machine) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
-		machineService.insertMachine(machine);
-		return "getMachineList";
-	}
+//	@PostMapping("/insertMachine")
+//	public String insertMachine(@ModelAttribute("machine") Machine machine) {
+//		if (machine.getMchId() == null) {
+//			return "redirect:login";
+//		}
+//		machineService.insertMachine(machine);
+//		return "getMachineList";
+//	}
 
-	@GetMapping("/getMachine")
-	public String getMachine(@ModelAttribute("machine")Machine machine, Model model) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
-		model.addAttribute("machine", machineService.getMachine(machine));
-		return "getMachine";
-	}
+//	@GetMapping("/getMachine")
+//	public String getMachine(@ModelAttribute("machine")Machine machine, Model model) {
+//		if (machine.getMchId() == null) {
+//			return "redirect:login";
+//		}
+//		model.addAttribute("machine", machineService.getMachine(machine));
+//		return "getMachine";
+//	}
 
-	@PostMapping("/updateMachine")
-	public String updateMachine(@ModelAttribute("machine") Machine machine) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
-		machineService.updateMachine(machine);
-		return "getMachineList";
-	}
+//	@PostMapping("/updateMachine")
+//	public String updateMachine(@ModelAttribute("machine") Machine machine) {
+//		if (machine.getMchId() == null) {
+//			return "redirect:login";
+//		}
+//		machineService.updateMachine(machine);
+//		return "getMachineList";
+//	}
 
-	@GetMapping("/deleteMachine")
-	public String deleteMachine(@ModelAttribute("machine") Machine machine) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
-		machineService.deleteMachine(machine);
-		return "getMachineList";
-	}
+//	@GetMapping("/deleteMachine")
+//	public String deleteMachine(@ModelAttribute("machine") Machine machine) {
+//		if (machine.getMchId() == null) {
+//			return "redirect:login";
+//		}
+//		machineService.deleteMachine(machine);
+//		return "getMachineList";
+//	}
 	
 	@CrossOrigin
 	@PostMapping("/getMachineListByMemId")
