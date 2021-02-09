@@ -23,22 +23,24 @@ public class MeasureController {
 	@Autowired
 	private MachineService machineService;
 	
-	@CrossOrigin
 	@PostMapping("/getMeasureListByMchId")
 	public List<Measure> getMeasureListByMchId(@RequestBody Machine machine){
 		return measureService.getMeasureListByMchId(machineService.findByMchId(machine.getMchId()));
 	}
 	
-	@CrossOrigin
 	@PostMapping("/getMeasureListByMchIdTo10")
 	public List<Measure> getMeasureListByMchIdTo10(@RequestBody Machine machine){
 		return measureService.getMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
 	}
 	
-	@CrossOrigin
 	@PostMapping("/getMeasureListByMchIdTo1")
 	public Measure getMeasureListByMchIdTo1(@RequestBody Machine machine){
 		return measureService.getMeasureByMchIdTo1((machine.getMchId()));
+	}
+	
+	@PostMapping("/tempCheck")
+	public List<Measure> tempCheck(){
+		return measureService.getDangerousTemparatureMeasure();
 	}
 	
 }

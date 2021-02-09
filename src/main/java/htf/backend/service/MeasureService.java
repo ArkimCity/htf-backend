@@ -14,5 +14,7 @@ public interface MeasureService {
 	
 	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
 	
+	List<Measure> getDangerousTemparatureMeasure();
+	
 	Measure getMeasureByMchIdTo1(String mchId);
 }
