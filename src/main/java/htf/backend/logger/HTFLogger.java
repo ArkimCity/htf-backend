@@ -14,8 +14,8 @@ public class HTFLogger {
 	
 	private static final Logger log =  LoggerFactory.getLogger(HTFLogger.class);
 
-	@Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
-    public void GetMapping(){ }
+	@Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
+    public void PostMapping(){ }
 	
 	@Around("PostMapping()")
 	public Object Around(ProceedingJoinPoint joinPoint) throws Throwable {
