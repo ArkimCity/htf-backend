@@ -45,5 +45,10 @@ public class MeasureServiceImpl implements MeasureService {
 		return measureRepo.getMeasureByMchIdTo1(mchId);
 	}
 
+	@Override
+	public List<Measure> getDangerousTemparatureMeasure() {
+		return measureRepo.getDangerousTemparatureMeasure();
+	}
+
 
 }

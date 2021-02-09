@@ -14,7 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
         "/create",
         "/member/**",
         "/loginAdmin",
-        "/error/**"
+        "/error/**",
+        "/tempCheck"
     };
  
     @Autowired
