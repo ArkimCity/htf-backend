@@ -43,7 +43,7 @@ public class AdminController {
 			return "redirect:login";
 		}
 		adminService.insertAdmin(admin);
-		return "insert succeded";
+		return "insertAdmin";
 	}
 
 	@GetMapping("/getAdmin")
