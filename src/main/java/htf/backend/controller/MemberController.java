@@ -79,7 +79,7 @@ public class MemberController {
 //	}
 
 	@PostMapping("/updateMember")
-	public String updateMember(@ModelAttribute("member") Member member) {
+	public String updateMember(@RequestBody Member member) {
 		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
