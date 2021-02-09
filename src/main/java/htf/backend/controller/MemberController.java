@@ -19,7 +19,6 @@ import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
 
 @CrossOrigin
-@SessionAttributes("member")
 @RestController
 public class MemberController {
 
@@ -79,7 +78,7 @@ public class MemberController {
 //	}
 
 	@PostMapping("/updateMember")
-	public String updateMember(@ModelAttribute("member") Member member) {
+	public String updateMember(@RequestBody Member member) {
 		if (member.getMemId() == null) {
 			return "redirect:login";
 		}
