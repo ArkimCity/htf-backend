@@ -60,7 +60,7 @@ public class MemberController {
 	}
 
 	@PostMapping("/insertMember")
-	public String insertMember(@ModelAttribute("member") Member member) {
+	public String insertMember(@RequestBody Member member) {
 		if (member.getMemId() == null) {
 			return "redirect:login";
 		}

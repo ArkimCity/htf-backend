@@ -1,5 +1,8 @@
 package htf.backend.domain;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +23,7 @@ public class Member {
 	private @Column(name="mem_id") String memId;
 	private @Column(name="mem_pw") String memPw;
 	private @Column(name="mem_rank")String memRank;
+//	private @Column Timestamp expireDate;
 	private @ManyToOne Admin adId;
 	
 } 

@@ -28,7 +28,9 @@ public class LoadDatabase {
 		return args -> {
 			log.info("Preloading " + adminRepository.save(new Admin("asd","sad")));
 			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad")));
- 
+			
+//			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", Timestamp.valueOf(LocalDateTime.now()), new Admin("a2sd","sad"))));
+
 			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", new Admin("a2sd","sad"))));
 			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "silver", new Admin("asd","sad"))));
 			
