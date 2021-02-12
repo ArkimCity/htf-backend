@@ -1,9 +1,14 @@
 package htf.backend.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
@@ -74,5 +79,11 @@ public class LoginController {
 			throw new Exception();
 		}
 		return response;
+	}
+	
+	@RequestMapping("/test")
+	public void m1(@RequestBody String code,HttpServletResponse response) throws IOException {
+		System.out.println(code);
+		response.sendRedirect("http://www.naver.com");
 	}
 }
