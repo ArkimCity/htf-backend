@@ -80,10 +80,4 @@ public class LoginController {
 		}
 		return response;
 	}
-	
-	@RequestMapping("/test")
-	public void m1(@RequestBody String code,HttpServletResponse response) throws IOException {
-		System.out.println(code);
-		response.sendRedirect("http://www.naver.com");
-	}
 }

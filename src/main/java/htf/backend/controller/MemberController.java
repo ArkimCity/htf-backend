@@ -95,4 +95,9 @@ public class MemberController {
 //		return "getMemberList";
 //	}
 
+	@PostMapping("/updateMemberToken")
+	public void updateMemberToken(@RequestBody Member member) {
+		memberService.updateMember(member);
+		System.out.println(member);
+	}
 }
