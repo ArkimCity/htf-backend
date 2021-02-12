@@ -20,7 +20,7 @@ public class JWTInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
     	if (request.getMethod().equals("OPTIONS")) {
-    		return true;
+    		return true; 
     	}
         final String token = request.getHeader(HEADER_AUTH).split(" ")[1];
         if(token != null && jwtService.isUsable(token)){

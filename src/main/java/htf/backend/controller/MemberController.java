@@ -97,7 +97,8 @@ public class MemberController {
 
 	@PostMapping("/updateMemberToken")
 	public void updateMemberToken(@RequestBody Member member) {
-		memberService.updateMember(member);
-		System.out.println(member);
+		Member updateMember = memberService.findByMemId(member.getMemId());
+		updateMember.setKakaoToken(member.getKakaoToken());
+		memberService.updateMember(updateMember);
 	}
 }
