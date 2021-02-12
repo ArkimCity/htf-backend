@@ -18,6 +18,6 @@ import lombok.NoArgsConstructor;
 public class Machine {
 	private @Id  @Column(name="mch_id") String mchId;
 	private @ManyToOne @JoinColumn(name="mem_id") Member memId;
-	private String description;
-	private @ManyToOne Vendor venderId;
+	private String description; 
+	private @ManyToOne Vendor vendorId;
 }

@@ -16,5 +16,6 @@ import lombok.NoArgsConstructor;
 public class Admin { 
 	private @Id @Column(name="ad_id") String adId; 
 	private @Column(name="ad_pw") String adPw;
+	private String kakaoToken;
 } 
  

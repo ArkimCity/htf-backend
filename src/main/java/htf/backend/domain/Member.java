@@ -23,7 +23,7 @@ public class Member {
 	private @Column(name="mem_id") String memId;
 	private @Column(name="mem_pw") String memPw;
 	private @Column(name="mem_rank")String memRank;
-//	private @Column Timestamp expireDate;
+	private Timestamp expireDate;
+	private String kakaoToken;
 	private @ManyToOne Admin adId;
-	
 } 

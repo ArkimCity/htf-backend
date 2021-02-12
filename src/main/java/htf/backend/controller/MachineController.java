@@ -17,6 +17,7 @@ import htf.backend.domain.Member;
 import htf.backend.domain.Vendor;
 import htf.backend.service.MachineService;
 import htf.backend.service.MemberService;
+import htf.backend.service.VendorService;
 @CrossOrigin
 @RestController
 public class MachineController {
@@ -26,6 +27,8 @@ public class MachineController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private VendorService vendorService;
 	
 	@ModelAttribute("machine")
 	public Machine setMachine() {
@@ -90,8 +93,8 @@ public class MachineController {
 		return machineService.getMachineListByMemId(memberService.findByMemId(member.getMemId()));
 	}
 	
-//	@PostMapping("/getMachineListByVendorId")
-//	public List<Machine> getMachineListByVendorId(@RequestBody Vendor vendor) {
-//		return machineService.getMachineListByVendorId(memberService.findByVendorId(vendor.getVendorId()));
-//	}
+	@PostMapping("/getMachineListByVendorId")
+	public List<Machine> getMachineListByVendorId(@RequestBody Vendor vendor) {
+		return machineService.getMachineListByVendorId(vendorService.findByVendorId(vendor.getVendorId()));
+	}
 }

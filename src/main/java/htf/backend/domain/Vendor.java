@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-public class Vendor {
+public class Vendor { 
 	private @Id String vendorId;
 	private String vendorPw;
 }

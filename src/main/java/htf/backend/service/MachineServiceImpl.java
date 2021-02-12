@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import htf.backend.dao.MachineRepository;
 import htf.backend.domain.Machine;
 import htf.backend.domain.Member;
+import htf.backend.domain.Vendor;
 
 @Service
 public class MachineServiceImpl implements MachineService {
@@ -45,6 +46,10 @@ public class MachineServiceImpl implements MachineService {
 
 	public List<Machine> getMachineListByMemId(Member memId) {
 		return machineRepo.getMachineListByMemId(memId);
+	}
+	
+	public List<Machine> getMachineListByVendorId(Vendor vendorId) {
+		return machineRepo.getMachineListByVendorId(vendorId);
 	}
 
 	public Machine findByMchId(String mchId) {
