@@ -1,6 +1,7 @@
 package htf.backend.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,13 +36,14 @@ public class LoginController {
 
 	@PostMapping(path = "/loginMember")
     public String loginMember(@RequestBody Member member) throws Exception {
-    	String response = null;
+		String response = "{\"htfToken\":\"";
         try {
         	Member loginMember = memberService.findByMemId(member.getMemId());
         	System.out.println(loginMember);
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
         		String token = jwtService.create(member.getMemId(), loginMember, "user");
-        		response = token;
+        		response += token + "\", \"kakaoToken\":\"";
+        		response += loginMember.getKakaoToken() + "\"}";
         	}
         } catch(Exception e) {
         	throw new Exception();
