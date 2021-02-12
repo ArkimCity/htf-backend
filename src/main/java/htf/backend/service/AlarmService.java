@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class FireAlarm {
+public class AlarmService {
 	public static void main(String[] args) {
 //		fireAlarm();
 		//measure 중에 온도에 해당하는 걸 찾아 그게 ex)50도 이상이 지속되면 그 meaure에 해당하는 기계에 해당하는 멤버에 해당하는 관리자를 관리자로 두는 모든 멤버를 소환하면 되겠다.

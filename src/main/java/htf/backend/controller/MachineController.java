@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Machine;
 import htf.backend.domain.Member;
+import htf.backend.domain.Vendor;
 import htf.backend.service.MachineService;
 import htf.backend.service.MemberService;
 @CrossOrigin
@@ -84,11 +85,13 @@ public class MachineController {
 //		return "getMachineList";
 //	}
 	
-	@CrossOrigin
 	@PostMapping("/getMachineListByMemId")
 	public List<Machine> getMachineListByMemId(@RequestBody Member member) {
 		return machineService.getMachineListByMemId(memberService.findByMemId(member.getMemId()));
 	}
 	
-	
+//	@PostMapping("/getMachineListByVendorId")
+//	public List<Machine> getMachineListByVendorId(@RequestBody Vendor vendor) {
+//		return machineService.getMachineListByVendorId(memberService.findByVendorId(vendor.getVendorId()));
+//	}
 }

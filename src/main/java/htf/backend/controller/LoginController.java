@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
 import htf.backend.domain.Member;
+import htf.backend.domain.Vendor;
 import htf.backend.service.AdminService;
 import htf.backend.service.JWTService;
 import htf.backend.service.MemberService;
+import htf.backend.service.VendorService;
 
 @CrossOrigin
 @RestController
@@ -18,9 +20,10 @@ public class LoginController {
 
 	@Autowired
 	private MemberService memberService;
-	
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private VendorService vendorService;
 	
 	@Autowired
 	private JWTService jwtService;
@@ -54,6 +57,22 @@ public class LoginController {
         } catch(Exception e) {
         	throw new Exception();
         }
+		return response;
+	}
+	
+	@PostMapping(path = "/loginVendor")
+	public String loginVendor(@RequestBody Vendor vendor) throws Exception {
+		String response = null;
+		try {
+			Vendor loginVendor = vendorService.findByVendorId(vendor.getVendorId());
+			System.out.println(loginVendor);
+			if(loginVendor != null && loginVendor.getVendorId().equals(vendor.getVendorId())){
+				String token = jwtService.create(vendor.getVendorId(), loginVendor, "admin");
+				response = token;
+			}
+		} catch(Exception e) {
+			throw new Exception();
+		}
 		return response;
 	}
 }

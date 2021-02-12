@@ -19,4 +19,5 @@ public class Machine {
 	private @Id  @Column(name="mch_id") String mchId;
 	private @ManyToOne @JoinColumn(name="mem_id") Member memId;
 	private String description;
+	private String venderId;
 }

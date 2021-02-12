@@ -22,6 +22,7 @@ public class HTFLogger {
 		log.info("====AspectJ TEST  : Around Logging Start====");
 		try {
 			Object result = joinPoint.proceed();
+			log.info("====AspectJ RESULT : " + result);
 			log.info("====AspectJ TEST  : Around Logging END====");
 			return result;
 		} catch (Exception e) {
