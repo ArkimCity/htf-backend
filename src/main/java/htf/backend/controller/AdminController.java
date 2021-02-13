@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
+import htf.backend.domain.Admin;
 import htf.backend.service.AdminService;
 
 @CrossOrigin
@@ -44,6 +45,13 @@ public class AdminController {
 		}
 		adminService.insertAdmin(admin);
 		return "insertAdmin";
+	}
+	
+	@PostMapping("/updateAdminToken")
+	public void updateAdminToken(@RequestBody Admin admin) {
+		Admin updateAdmin = adminService.findByAdId(admin.getAdId());
+		updateAdmin.setKakaoToken(admin.getKakaoToken());
+		adminService.updateAdmin(updateAdmin);
 	}
 //
 //	@GetMapping("/getAdmin")
