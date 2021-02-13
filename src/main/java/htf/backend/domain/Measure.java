@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 public class Measure {
-	private @Id @GeneratedValue @Column(name="measure_id") Long measureId;
+	private @Id @GeneratedValue(generator="measure_seq") @Column(name="measure_id") Long measureId;
 	private @ManyToOne @JoinColumn(name="mch_id") Machine mchId;
 	private String mchcd;
 	private String param;
