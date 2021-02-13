@@ -21,7 +21,7 @@ public class Measure {
 	private @ManyToOne @JoinColumn(name="mch_id") Machine mchId;
 	private String mchcd;
 	private String param;
-	private String value;
+	private Double value;
 	private String created;
 	private String modified;  
 }
