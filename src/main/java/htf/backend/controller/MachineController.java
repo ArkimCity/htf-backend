@@ -60,11 +60,12 @@ public class MachineController {
 
 	@PostMapping("/getAdIdByMchId")
 	public String getMachine(@RequestBody Machine machine) {
+		System.out.println(machine);
 		if (machine.getMchId() == null) {
 			return "redirect:login";
 		}
-		System.out.println(memberService.getMember(machineService.getMachine(machine).getMemId()).getAdId().getAdId());;
-		return "";
+		String adId = machineService.findByMchId(machine.getMchId()).getMemId().getAdId().getAdId();
+		return adId;
 	}
 
 	@PostMapping("/updateMachine")

@@ -20,20 +20,11 @@ public class KakaoService {
 	
 	String uuidList = "[\"";
 	
-//	public static void main(String[] args) throws Exception {
-		//adId를 통해 token 조회
-//		String token = getToken("a2sd");
-//		String token = "3A5pxHHuFg-J-ZbF6dAUgkBfKgRE89H5FDXUvQopb7kAAAF3nBWcOA"; //임시
-//		JSONObject clientList = getList(token);
-//		System.out.println(clientList);
-//		sendAlarm(clientList, token);
-//	}
-	
-	private String getToken(String adId) {
+	public String getToken(String adId) {
 		return adminService.findByAdId(adId).getKakaoToken();
 	}
 	
-	public JSONObject getList(String token) throws Exception {
+	public static JSONObject getList(String token) throws Exception {
 		String url = "https://kapi.kakao.com/v1/api/talk/friends";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "Bearer "+token);
@@ -62,7 +53,7 @@ public class KakaoService {
         return clientJson;
 	}
 
-	public void sendAlarm(JSONObject clientList, String token) throws Exception {
+	public static void sendAlarm(JSONObject clientList, String token) throws Exception {
 		String url = "https://kapi.kakao.com/v1/api/talk/friends/message/default/send";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "Bearer "+token);
