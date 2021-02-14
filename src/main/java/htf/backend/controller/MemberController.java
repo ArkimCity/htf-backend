@@ -63,14 +63,14 @@ public class MemberController {
 		return "redirect:getMemberList";
 	}
 
-//	@GetMapping("/getMember")
-//	public String getMember(@ModelAttribute("member")Member member, Model model) {
-//		if (member.getMemId() == null) {
-//			return "redirect:login";
-//		}
-//		model.addAttribute("member", memberService.getMember(member));
-//		return "getMember";
-//	}
+	@PostMapping("/getMember")
+	public String getMember(@RequestBody Member member) {
+		if (member.getMemId() == null) {
+			return "redirect:login";
+		}
+		memberService.findByMemId(member.getMemId());
+		return "getMember";
+	}
 
 	@PostMapping("/updateMember")
 	public String updateMember(@RequestBody Member member) {
