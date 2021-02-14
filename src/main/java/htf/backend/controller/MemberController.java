@@ -74,10 +74,9 @@ public class MemberController {
 
 	@PostMapping("/updateMember")
 	public String updateMember(@RequestBody Member member) {
-		if (member.getMemId() == null) {
-			return "redirect:login";
-		}
-		memberService.updateMember(member);
+		Member updateMember = memberService.findByMemId(member.getMemId()); 
+		updateMember.setMemRank(member.getMemRank());
+		memberService.updateMember(updateMember);
 		return "updateMember";
 	}
 

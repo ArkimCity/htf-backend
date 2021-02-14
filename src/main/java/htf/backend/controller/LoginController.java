@@ -36,7 +36,7 @@ public class LoginController {
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
         		String token = jwtService.create(member.getMemId(), loginMember, "user");
         		response += token + "\", \"kakaoToken\":\"";
-        		response += loginMember.getKakaoToken() + "\", \"rank\":\"";
+        		response += loginMember.getKakaoToken() + "\", \"memRank\":\"";
         		response += loginMember.getMemRank() + "\"}";
         	}
         } catch(Exception e) {
