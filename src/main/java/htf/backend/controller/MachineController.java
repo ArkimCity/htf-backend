@@ -58,14 +58,14 @@ public class MachineController {
 //		return "getMachineList";
 //	}
 
-//	@GetMapping("/getMachine")
-//	public String getMachine(@ModelAttribute("machine")Machine machine, Model model) {
-//		if (machine.getMchId() == null) {
-//			return "redirect:login";
-//		}
-//		model.addAttribute("machine", machineService.getMachine(machine));
-//		return "getMachine";
-//	}
+	@PostMapping("/getAdIdByMchId")
+	public String getMachine(@RequestBody Machine machine) {
+		if (machine.getMchId() == null) {
+			return "redirect:login";
+		}
+		System.out.println(memberService.getMember(machineService.getMachine(machine).getMemId()).getAdId().getAdId());;
+		return "";
+	}
 
 	@PostMapping("/updateMachine")
 	public String updateMachine(@RequestBody Machine machine) {

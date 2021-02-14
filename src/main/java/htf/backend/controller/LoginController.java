@@ -33,11 +33,11 @@ public class LoginController {
 		String response = "{\"htfToken\":\"";
         try {
         	Member loginMember = memberService.findByMemId(member.getMemId());
-        	System.out.println(loginMember);
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
         		String token = jwtService.create(member.getMemId(), loginMember, "user");
         		response += token + "\", \"kakaoToken\":\"";
-        		response += loginMember.getKakaoToken() + "\"}";
+        		response += loginMember.getKakaoToken() + "\", \"rank\":\"}";
+        		response += loginMember.getMemRank() + "\"}";
         	}
         } catch(Exception e) {
         	throw new Exception();
