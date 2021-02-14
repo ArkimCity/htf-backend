@@ -29,7 +29,8 @@ public class LoadDatabase {
 		
 		return args -> {
 			log.info("Preloading " + adminRepository.save(new Admin("asd","sad",null)));
-			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad",null)));
+			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad","21UGbv_hZKm4A10QAp99Yg31OJE_KjKg3yMDJgorDR4AAAF3n-gUjg")));
+			log.info("Preloading " + adminRepository.save(new Admin("kju","kju","N-drt3L9K6WyfEjsh_3WHW4y9Z-1VmxeekMOhAopcBQAAAF3oAuBUQ")));
 			
 			log.info("Preloading " + vendorRespository.save(new Vendor("514684", "vpw")));
 			
@@ -44,12 +45,12 @@ public class LoadDatabase {
 			log.info("Preloading " + machineRepository.save(new Machine("1561sadsd5", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light3",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("a25165fwaf", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light4",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("561485a1fa", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light5",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("84a9fasdas", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light6",new Vendor("514684", "vpw"))));
 
 			log.info("Preloading " + machineRepository.save(new Machine("165165daad", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light1",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("5614a65f1f", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light2",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("af1a561fas", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light3",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("51a65f1afs", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light4",new Vendor("514684", "vpw"))));
-			log.info("Preloading " + machineRepository.save(new Machine("84a9fasdas", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light5",new Vendor("514684", "vpw"))));
 			
 			log.info("Preloading " + measureRepository.save(new Measure(1L, new Machine("4561a65s1f", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light1",new Vendor("514684", "vpw")), "ligt", "Celcius", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
 			log.info("Preloading " + measureRepository.save(new Measure(2L, new Machine("4561a65s1f", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light1",new Vendor("514684", "vpw")), "ligt", "Celcius", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
