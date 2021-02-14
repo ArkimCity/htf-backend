@@ -29,15 +29,11 @@ public class AlarmController {
     public String fireKakao(@RequestBody Admin admin) throws Exception {
 		JSONObject clientList = new JSONObject();
 		String token = adminService.findByAdId(admin.getAdId()).getKakaoToken();
-		System.out.println(token);
-		System.out.println("======================================================");
 		try {
-			System.out.println(token);
 			clientList = kakaoService.getList(token);
 		} catch (Exception e) {
-			e.printStackTrace();
+			return e.getMessage();
 		}
-		System.out.println("======================================================");
 		kakaoService.sendAlarm(clientList, token);
 		return token;
     }

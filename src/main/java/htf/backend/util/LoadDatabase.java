@@ -29,7 +29,8 @@ public class LoadDatabase {
 		
 		return args -> {
 			log.info("Preloading " + adminRepository.save(new Admin("asd","sad",null)));
-			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad","pqUzbi1Lh6sxG-JCdQxhtxWsmD8XzKi-jd6wCAorDKcAAAF3n9VM1Q")));
+			log.info("Preloading " + adminRepository.save(new Admin("a2sd","sad","21UGbv_hZKm4A10QAp99Yg31OJE_KjKg3yMDJgorDR4AAAF3n-gUjg")));
+			log.info("Preloading " + adminRepository.save(new Admin("kju","kju","N-drt3L9K6WyfEjsh_3WHW4y9Z-1VmxeekMOhAopcBQAAAF3oAuBUQ")));
 			
 			log.info("Preloading " + vendorRespository.save(new Vendor("514684", "vpw")));
 			
