@@ -16,7 +16,7 @@ import net.minidev.json.parser.JSONParser;
 
 public class KakaoService {
 	@Autowired
-	private static AdminService adminService;
+	private AdminService adminService;
 	
 	String uuidList = "[\"";
 	
@@ -29,11 +29,11 @@ public class KakaoService {
 //		sendAlarm(clientList, token);
 //	}
 	
-	private static String getToken(String adId) {
+	private String getToken(String adId) {
 		return adminService.findByAdId(adId).getKakaoToken();
 	}
 	
-	public static JSONObject getList(String token) throws Exception {
+	public JSONObject getList(String token) throws Exception {
 		String url = "https://kapi.kakao.com/v1/api/talk/friends";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "Bearer "+token);
@@ -62,7 +62,7 @@ public class KakaoService {
         return clientJson;
 	}
 
-	public static void sendAlarm(JSONObject clientList, String token) throws Exception {
+	public void sendAlarm(JSONObject clientList, String token) throws Exception {
 		String url = "https://kapi.kakao.com/v1/api/talk/friends/message/default/send";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "Bearer "+token);
