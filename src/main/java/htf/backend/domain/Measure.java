@@ -22,6 +22,6 @@ public class Measure {
 	private String mchcd;
 	private String param;
 	private Double value;
-	private String created;
+	private Long created;
 	private String modified;  
 }

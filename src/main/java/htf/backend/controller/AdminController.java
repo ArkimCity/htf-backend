@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import htf.backend.domain.Admin;
 import htf.backend.domain.Admin;
 import htf.backend.service.AdminService;
+import htf.backend.service.JWTService;
 
 @CrossOrigin
 @RestController
@@ -22,6 +23,8 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private JWTService jwtService;
 	
 	@ModelAttribute("admin")
 	public Admin setAdmin() {
@@ -39,12 +42,20 @@ public class AdminController {
 //	}
 
 	@PostMapping("/insertAdmin")
-	public String insertAdmin(@RequestBody Admin admin) {
+	public String insertAdmin(@RequestBody Admin admin) throws Exception {
 		if (admin.getAdId() == null) {
 			return "redirect:login";
 		}
 		adminService.insertAdmin(admin);
-		return "insertAdmin";
+		
+    	String response = null;
+        try {
+    		String token = jwtService.create(admin.getAdId(), admin, "admin");
+    		response = token;
+        } catch(Exception e) {
+        	throw new Exception();
+        }
+		return response;
 	}
 	
 	@PostMapping("/updateAdminToken")
