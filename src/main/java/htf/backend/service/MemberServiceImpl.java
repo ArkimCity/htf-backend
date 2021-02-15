@@ -35,10 +35,9 @@ public class MemberServiceImpl implements MemberService {
 
 	public void updateMember(Member member) {
 		Member findMember = memberRepo.findByMemId(member.getMemId());
-		findMember.setMemPw(member.getMemPw());
 		memberRepo.save(findMember);
 	}
-
+	
 	public void deleteMember(Member member) {
 		memberRepo.deleteById(member.getMemKey());
 	}

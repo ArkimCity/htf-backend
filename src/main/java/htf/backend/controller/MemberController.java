@@ -72,10 +72,18 @@ public class MemberController {
 		return "getMember";
 	}
 
-	@PostMapping("/updateMember")
-	public String updateMember(@RequestBody Member member) {
+	@PostMapping("/updateMemberRank")
+	public String updateMemberRank(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
 		updateMember.setMemRank(member.getMemRank());
+		memberService.updateMember(updateMember);
+		return "updateMember";
+	}
+	
+	@PostMapping("/updateMemberPw")
+	public String updateMemberPw(@RequestBody Member member) {
+		Member updateMember = memberService.findByMemId(member.getMemId()); 
+		updateMember.setMemPw(member.getMemPw());
 		memberService.updateMember(updateMember);
 		return "updateMember";
 	}
