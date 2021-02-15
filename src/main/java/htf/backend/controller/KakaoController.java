@@ -1,5 +1,7 @@
 package htf.backend.controller;
 
+import java.sql.Timestamp;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,11 +28,18 @@ public class KakaoController {
 	}
 	
 	@PostMapping("kakaoSub")
-	public void kakaoSub(@RequestBody String s , @RequestBody Member member) throws Exception {
+	public void kakaoSub(@RequestBody String s) throws Exception {
 		JSONObject param = new JSONObject(s);
 		JSONObject res = KakaoSubscription.requestApprove(param.getString("tid"), param.getString("pg_token"), param.getString("memId"));
 		System.out.println("final result : "+res);
-	
-		//sid를 DB에 update시키고, rank도 update시키고, memId도 알고있음
+		Member updateMember = memberService.findByMemId(res.getString("partner_user_id"));
+		updateMember.setMemId(res.getString("partner_user_id"));
+		updateMember.setMemRank(res.getString("item_name"));
+		updateMember.setSid(res.getString("sid"));
+		String approveData = res.getString("approved_at").replace("T", " ");
+		Timestamp t = Timestamp.valueOf(approveData);
+		System.out.println("Payment date : "+t);
+		updateMember.setPaymentDate(t);
+		memberService.updateMember(updateMember);
 	}
 }

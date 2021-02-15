@@ -6,10 +6,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import htf.backend.domain.Member;
+import htf.backend.service.MemberService;
 
 
 public class KakaoSubscription {
+
+	@Autowired
+	private static MemberService memberService;
 	
 	public static JSONObject requestPayment(String memId, String rank, String price) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
@@ -85,5 +97,75 @@ public class KakaoSubscription {
         System.out.println("sid : "+res.getString("sid"));
         return res;
 	}
-
+	
+	public static void requestSubscribe(String sid, String price, String memId) throws Exception {
+		String url = "https://kapi.kakao.com/v1/payment/approve";
+		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
+		httpConn.setRequestProperty("Authorization", "KakaoAK 8fe7fc4a9f57b22dc5a4a209121cb7f5");
+		httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		httpConn.setRequestMethod("POST");
+		httpConn.setConnectTimeout(10000);       //컨텍션타임아웃 10초
+		httpConn.setReadTimeout(5000);
+		
+		httpConn.setDoOutput(true);
+		
+		String query =
+				"cid=TCSUBSCRIP&" +
+				"sid="+sid+"&" +
+				"partner_order_id=0000&" +
+				"partner_user_id="+memId+"&" +
+				"quantity=1&" + 
+				"tax_free_amount=0&" +
+				"total_amount="+price;
+						
+        DataOutputStream wr = new DataOutputStream(httpConn.getOutputStream());
+        wr.writeBytes(query);
+        wr.flush();
+        wr.close();
+        Charset charset2 = Charset.forName("UTF-8");
+        BufferedReader in = new BufferedReader(new InputStreamReader(httpConn.getInputStream(),charset2));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        System.out.println(response.toString());
+	}
+	
+	public static void kakaoSubPay(String memId, String sid, String rank) throws Exception {
+		if(rank.equals("pro")) {
+			KakaoSubscription.requestSubscribe(sid, "5000", memId);
+		} else if(rank.equals("enterprise")) {
+			KakaoSubscription.requestSubscribe(sid, "10000", memId);
+		}
+		Timestamp t = memberService.findByMemId(memId).getPaymentDate();
+		Calendar currentCal = Calendar.getInstance();
+		currentCal.add(currentCal.DATE, 0);
+		if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH)+2)) {
+			System.out.println("it's time to Pay!");
+			t.setMonth(t.getMonth()+1);
+			Member updateMember = new Member();
+			updateMember.setPaymentDate(t);
+			memberService.updateMember(updateMember);
+		} else {
+			System.out.println(t);
+			System.out.println(currentCal);
+		}
+	}
+	public static void checkSubDate(String memId, String sid, String rank) {
+		int sleepDay = 1; // 실행간격 : 하루
+		final ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
+		exec.scheduleAtFixedRate(new Runnable() {
+			public void run() {
+				try {
+					kakaoSubPay(memId, sid, rank);
+				} catch (Exception e) {
+					e.printStackTrace();
+					// 에러 발생시 Executor를 중지시킨다
+					exec.shutdown();
+				}
+			}
+		}, 0, sleepDay, TimeUnit.DAYS);
+	}
 }

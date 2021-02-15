@@ -25,8 +25,8 @@ public class Member {
 	private @Column(name="mem_id") String memId;
 	private @Column(name="mem_pw") String memPw;
 	private @Column(name="mem_rank")String memRank;
-	private Timestamp expireDate;
+	private Timestamp paymentDate;
 	private String kakaoToken;
-//	private String sid;
+	private String sid;
 	private @ManyToOne Admin adId;
 } 
