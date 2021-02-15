@@ -40,8 +40,6 @@ public class Crawler {
 		
 		for(Element e : relatedwords) {
 			resultList.add(StringUtils.substringBetween(e.toString(), "</em>", "</span>"));
-
-			resultList.add(e.toString());
 		}
 		return resultList.get(0);
 	}
