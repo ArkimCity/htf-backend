@@ -51,4 +51,14 @@ public class MeasureController {
 	public String naverDust() throws IOException {
 		return Crawler.naverDustCrawler();
 	}
+	
+	@PostMapping("/naverTempCrawler")
+	public String naverTempCrawler() throws IOException {
+		return Crawler.naverTempCrawler();
+	}
+	
+	@PostMapping("/naverHumidtyCrawler")
+	public String naverHumidtyCrawler() throws IOException {
+		return Crawler.naverHumidtyCrawler();
+	}
 }

@@ -36,16 +36,16 @@ public class LoadDatabase {
 			
 //			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", Timestamp.valueOf(LocalDateTime.now()), new Admin("a2sd","sad",null))));
 
-			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null))));
-			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null))));
-			log.info("Preloading " + meberRepository.save(new Member(3L, "ju", "11", "silver", null, null, new Admin("a2sd","sad",null))));
+			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", null, null, Admin.builder().adId("a2sd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "silver", null, null, Admin.builder().adId("asd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(3L, "ju", "11", "silver", null, null, Admin.builder().adId("a2sd").build())));
 			
-			log.info("Preloading " + machineRepository.save(new Machine("4561a65s1f", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light1",new Vendor("514684", "vpw"))));
-			log.info("Preloading " + machineRepository.save(new Machine("7879awdd48", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light2",new Vendor("514684", "vpw"))));
-			log.info("Preloading " + machineRepository.save(new Machine("1561sadsd5", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light3",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("4561a65s1f", Member.builder().memKey(1L).build(), "TempSensor1",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("7879awdd48", Member.builder().memKey(1L).build(), "TempSensor2",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("1561sadsd5", Member.builder().memKey(1L).build(), "TempSensor3",new Vendor("514684", "vpw"))));
 
-			log.info("Preloading " + machineRepository.save(new Machine("af1a561fas", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light13",new Vendor("514684", "vpw"))));
-			log.info("Preloading " + machineRepository.save(new Machine("51a65f1afs", new Member(2L, "om", "11", "silver", null, null, new Admin("asd","sad",null)), "light14",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("af1a561fas", Member.builder().memKey(2L).build(), "TempSensor11",new Vendor("514684", "vpw"))));
+			log.info("Preloading " + machineRepository.save(new Machine("51a65f1afs", Member.builder().memKey(2L).build(), "TempSensor12",new Vendor("514684", "vpw"))));
 			
 			log.info("Preloading " + measureRepository.save(new Measure(1L, new Machine("4561a65s1f", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light1",new Vendor("514684", "vpw")), "ligt", "Celcius", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
 			log.info("Preloading " + measureRepository.save(new Measure(2L, new Machine("4561a65s1f", new Member(1L, "sh", "11", "silver", null, null, new Admin("a2sd","sad",null)), "light1",new Vendor("514684", "vpw")), "ligt", "Celcius", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
