@@ -19,9 +19,6 @@ import htf.backend.service.MemberService;
 
 
 public class KakaoSubscription {
-
-	@Autowired
-	private static MemberService memberService;
 	
 	public static JSONObject requestPayment(String memId, String rank, String price) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
@@ -131,41 +128,5 @@ public class KakaoSubscription {
         }
         in.close();
         System.out.println(response.toString());
-	}
-	
-	public static void kakaoSubPay(String memId, String sid, String rank) throws Exception {
-		if(rank.equals("pro")) {
-			KakaoSubscription.requestSubscribe(sid, "5000", memId);
-		} else if(rank.equals("enterprise")) {
-			KakaoSubscription.requestSubscribe(sid, "10000", memId);
-		}
-		Timestamp t = memberService.findByMemId(memId).getPaymentDate();
-		Calendar currentCal = Calendar.getInstance();
-		currentCal.add(currentCal.DATE, 0);
-		if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH)+2)) {
-			System.out.println("it's time to Pay!");
-			t.setMonth(t.getMonth()+1);
-			Member updateMember = new Member();
-			updateMember.setPaymentDate(t);
-			memberService.updateMember(updateMember);
-		} else {
-			System.out.println(t);
-			System.out.println(currentCal);
-		}
-	}
-	public static void checkSubDate(String memId, String sid, String rank) {
-		int sleepDay = 1; // 실행간격 : 하루
-		final ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
-		exec.scheduleAtFixedRate(new Runnable() {
-			public void run() {
-				try {
-					kakaoSubPay(memId, sid, rank);
-				} catch (Exception e) {
-					e.printStackTrace();
-					// 에러 발생시 Executor를 중지시킨다
-					exec.shutdown();
-				}
-			}
-		}, 0, sleepDay, TimeUnit.DAYS);
 	}
 }
