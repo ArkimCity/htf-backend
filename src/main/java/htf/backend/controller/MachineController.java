@@ -42,21 +42,20 @@ public class MachineController {
 //	}
 
 //	@GetMapping("/insertMachine")
-//	public String insertMachineView(@ModelAttribute("machine") Machine machine) {
+//	public String insertMachineView(@RequestBody Machine machine) {
 //		if (machine.getMchId() == null) {
 //			return "redirect:login";
-//		}
 //		return "insertMachine";
 //	}
 
-//	@PostMapping("/insertMachine")
-//	public String insertMachine(@ModelAttribute("machine") Machine machine) {
-//		if (machine.getMchId() == null) {
-//			return "redirect:login";
-//		}
-//		machineService.insertMachine(machine);
-//		return "getMachineList";
-//	}
+	@PostMapping("/insertMachine")
+	public String insertMachine(@RequestBody Machine machine) {
+		if (machine.getMchId() == null) {
+			return "redirect:login";
+		}
+		machineService.insertMachine(machine);
+		return "getMachineList";
+	}
 
 	@PostMapping("/getAdIdByMchId")
 	public String getMachine(@RequestBody Machine machine) {

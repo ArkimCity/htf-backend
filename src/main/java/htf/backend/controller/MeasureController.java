@@ -1,5 +1,6 @@
 package htf.backend.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Machine;
 import htf.backend.domain.Measure;
+import htf.backend.service.Crawler;
 import htf.backend.service.MachineService;
 import htf.backend.service.MeasureService;
 
@@ -43,5 +45,10 @@ public class MeasureController {
 	public List<Measure> tempCheck(){
 		System.out.println(measureService.getDangerousTemparatureMeasure());
 		return measureService.getDangerousTemparatureMeasure();
+	}
+	
+	@PostMapping("/naverDust")
+	public String naverDust() throws IOException {
+		return Crawler.naverDustCrawler();
 	}
 }
