@@ -11,18 +11,7 @@ import org.json.JSONObject;
 
 public class KakaoSubscription {
 	
-	public String tid = null;
-	
-	public static String getTid() {
-		KakaoSubscription ks = new KakaoSubscription();
-		return ks.tid;
-	}
-	
-	public static void main(String[] args) throws Exception {
-		requestApprove("T2863461929387358684", "d1d2f8bcbc14f522a842");
-	}
-	
-	public static String requestPayment() throws Exception {
+	public static JSONObject requestPayment(String memId, String rank, String price) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "KakaoAK 8fe7fc4a9f57b22dc5a4a209121cb7f5");
@@ -36,14 +25,14 @@ public class KakaoSubscription {
 		String query =
 				"cid=TCSUBSCRIP&" +
 				"partner_order_id=0000&" +
-				"partner_user_id=sh&" +
-				"item_name=enterprise&" +
+				"partner_user_id="+memId+"&" +
+				"item_name="+rank+"&" +
 				"quantity=1&" +
-				"total_amount=10000&" +
+				"total_amount="+price+"&" +
 				"tax_free_amount=0&" +
-				"approval_url=http://192.168.168.156/kakaoSub&" +
-				"cancel_url=http://192.168.168.156/kakaoSub&" +
-				"fail_url=http://192.168.168.156/kakaoSub";
+				"approval_url=http://192.168.168.162:8080/kakaoSub&" +
+				"cancel_url=http://192.168.168.162:8080/kakaoSub&" +
+				"fail_url=http://192.168.168.162:8080/kakaoSub";
 						
         DataOutputStream wr = new DataOutputStream(httpConn.getOutputStream());
         wr.writeBytes(query);
@@ -58,15 +47,10 @@ public class KakaoSubscription {
         }
         in.close();
         System.out.println(response.toString());
-        JSONObject res = new JSONObject(response.toString());
-        System.out.println("tid : "+res.getString("tid"));
-        System.out.println(res.get("next_redirect_pc_url"));
-        KakaoSubscription ks = new KakaoSubscription();
-        ks.tid = res.getString("tid");
-        return res.getString("next_redirect_pc_url");
+        return new JSONObject(response.toString());
 	}
 	
-	public static void requestApprove(String tid, String pg_token) throws Exception {
+	public static JSONObject requestApprove(String tid, String pg_token, String memId) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/approve";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "KakaoAK 8fe7fc4a9f57b22dc5a4a209121cb7f5");
@@ -81,7 +65,7 @@ public class KakaoSubscription {
 				"cid=TCSUBSCRIP&" +
 				"tid="+tid+"&" +
 				"partner_order_id=0000&" +
-				"partner_user_id=sh&" +
+				"partner_user_id="+memId+"&" +
 				"pg_token="+pg_token;
 						
         DataOutputStream wr = new DataOutputStream(httpConn.getOutputStream());
@@ -97,6 +81,9 @@ public class KakaoSubscription {
         }
         in.close();
         System.out.println(response.toString());
+        JSONObject res = new JSONObject(response.toString());
+        System.out.println("sid : "+res.getString("sid"));
+        return res;
 	}
 
 }

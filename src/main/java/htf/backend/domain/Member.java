@@ -27,5 +27,6 @@ public class Member {
 	private @Column(name="mem_rank")String memRank;
 	private Timestamp expireDate;
 	private String kakaoToken;
+//	private String sid;
 	private @ManyToOne Admin adId;
 } 
