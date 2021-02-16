@@ -96,7 +96,7 @@ public class KakaoSubscription {
 	}
 	
 	public static void requestSubscribe(String sid, String price, String memId) throws Exception {
-		String url = "https://kapi.kakao.com/v1/payment/approve";
+		String url = "https://kapi.kakao.com/v1/payment/subscription";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "KakaoAK 8fe7fc4a9f57b22dc5a4a209121cb7f5");
 		httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

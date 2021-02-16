@@ -25,6 +25,17 @@ public class MemberController {
 		return new Member();
 	}
 
+	
+	@PostMapping("kakaoSub2")
+	public void kakaoSub() {
+		Member m = memberService.findByMemId("sh");
+		System.out.println(m);
+		m.setMemRank("test");
+		System.out.println("update");
+		memberService.updateMember(m);
+		m = memberService.findByMemId("sh");
+		System.out.println(m);
+	}
 //	@RequestMapping("/getMemberList")
 //	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model) {
 //		if (member.getMemId() == null) {
@@ -87,7 +98,7 @@ public class MemberController {
 		memberService.updateMember(updateMember);
 		return "updateMember";
 	}
-
+	
 //	@GetMapping("/deleteMember")
 //	public String deleteMember(@ModelAttribute("member") Member member) {
 //		if (member.getMemId() == null) {
