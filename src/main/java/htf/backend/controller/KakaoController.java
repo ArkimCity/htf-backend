@@ -28,7 +28,7 @@ public class KakaoController {
 	public String initSub(@RequestBody String s) throws Exception {
 		JSONObject param = new JSONObject(s);
 		System.out.println("param : "+s);
-		JSONObject res = KakaoSubscription.requestPayment(param.getString("memId"), param.getString("rank"), param.getString("price"));
+		JSONObject res = KakaoSubscription.requestPayment(param.getString("memId"), param.getString("rank"), param.getString("price"), param.getString("FRONT_SERVER"));
 		return "{\"tid\":\""+res.getString("tid")+"\",\"url\":\""+res.getString("next_redirect_pc_url")+"\"}";
 	}
 	
@@ -46,75 +46,44 @@ public class KakaoController {
 		updateMember.setPaymentDate(t);
 		memberService.updateMember(updateMember);
 		
-		//Loop for check subscription date (per one day)
-		int sleepDay = 1;
+		//Make Payment per 30 days
 		final ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
-		exec.scheduleAtFixedRate(new Runnable() {
-			public void run() {
-				try {
-					Member subMember = memberService.findByMemId(updateMember.getMemId());
-					System.out.println(subMember);
-					String memId = subMember.getMemId();
-					String rank = subMember.getMemRank();
-					String sid = subMember.getSid();
-					//check if it is time for payment
-					Calendar currentCal = Calendar.getInstance();
-					if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH))) {
+		Runnable subrun = ()->{
+			exec.scheduleAtFixedRate(new Runnable() {
+				public void run() {
+					try {
+						Member subMember = memberService.findByMemId(updateMember.getMemId());
+						System.out.println(subMember);
+						String memId = subMember.getMemId();
+						String rank = subMember.getMemRank();
+						String sid = subMember.getSid();
 						if(rank.equals("pro")) {
 							KakaoSubscription.requestSubscribe(sid, "5000", memId);
 						} else if(rank.equals("enterprise")) {
 							KakaoSubscription.requestSubscribe(sid, "10000", memId);
 						}
-						System.out.println("it's time to Pay!");
-						t.setMonth(t.getMonth()+1);
-						System.out.println("new pay date is : "+t);
-						subMember.setPaymentDate(t);
-						memberService.updateMember(subMember);
-					} else {
-						System.out.println("t : "+t.getMonth() + ", date : "+t.getDate());
-						System.out.println("curcal : "+currentCal.get(Calendar.MONTH) + ", date : "+currentCal.get(Calendar.DATE));
+						//check if it is time for payment
+//						Calendar currentCal = Calendar.getInstance();
+//						if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH))) {
+//							System.out.println("it's time to Pay!");
+//							t.setMonth(t.getMonth()+1);
+//							System.out.println("new pay date is : "+t);
+//							subMember.setPaymentDate(t);
+//							memberService.updateMember(subMember);
+//						} else {
+//							System.out.println("t : "+t.getMonth() + ", date : "+t.getDate());
+//							System.out.println("curcal : "+currentCal.get(Calendar.MONTH) + ", date : "+currentCal.get(Calendar.DATE));
+//						}
+					} catch (Exception e) {
+						e.printStackTrace();
+						// 에러 발생시 Executor를 중지시킨다
+						exec.shutdown();
 					}
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-					// 에러 발생시 Executor를 중지시킨다
-					exec.shutdown();
 				}
-			}
-		}, 0, sleepDay, TimeUnit.DAYS);
+			}, 0, 30, TimeUnit.DAYS);
+		};
+		
+		exec.schedule(subrun, 30, TimeUnit.DAYS);
+		
 	}
-	
-//	public static void kakaoSubPay(String memId, String sid, String rank, Timestamp t) throws Exception {
-//		Calendar currentCal = Calendar.getInstance();
-//		if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH))) {
-//			if(rank.equals("pro")) {
-//				KakaoSubscription.requestSubscribe(sid, "5000", memId);
-//			} else if(rank.equals("enterprise")) {
-//				KakaoSubscription.requestSubscribe(sid, "10000", memId);
-//			}
-//			System.out.println("it's time to Pay!");
-//			t.setMonth(t.getMonth()+1);
-//			Member updateMember = new Member();
-//			updateMember.setPaymentDate(t);
-//			memberService.updateMember(updateMember);
-//		} else {
-//			System.out.println("t : "+t.getMonth() + ", date : "+t.getDate());
-//			System.out.println("curcal : "+currentCal.get(Calendar.MONTH) + ", date : "+currentCal.get(Calendar.DATE));
-//		}
-//	}
-//	public static void checkSubDate(String memId, String sid, String rank, Timestamp t) {
-//		int sleepDay = 1; // 실행간격 : 하루
-//		final ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
-//		exec.scheduleAtFixedRate(new Runnable() {
-//			public void run() {
-//				try {
-//					kakaoSubPay(memId, sid, rank, t);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//					// 에러 발생시 Executor를 중지시킨다
-//					exec.shutdown();
-//				}
-//			}
-//		}, 0, sleepDay, TimeUnit.DAYS);
-//	}
 }

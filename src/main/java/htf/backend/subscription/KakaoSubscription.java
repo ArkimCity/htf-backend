@@ -20,7 +20,7 @@ import htf.backend.service.MemberService;
 
 public class KakaoSubscription {
 	
-	public static JSONObject requestPayment(String memId, String rank, String price) throws Exception {
+	public static JSONObject requestPayment(String memId, String rank, String price, String FRONT_SERVER) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
 		httpConn.setRequestProperty("Authorization", "KakaoAK 8fe7fc4a9f57b22dc5a4a209121cb7f5");
@@ -39,9 +39,9 @@ public class KakaoSubscription {
 				"quantity=1&" +
 				"total_amount="+price+"&" +
 				"tax_free_amount=0&" +
-				"approval_url=http://192.168.168.162:8080/kakaoSub&" +
-				"cancel_url=http://192.168.168.162:8080/kakaoSub&" +
-				"fail_url=http://192.168.168.162:8080/kakaoSub";
+				"approval_url="+FRONT_SERVER+"/kakaoSub&" +
+				"cancel_url="+FRONT_SERVER+"/kakaoSub&" +
+				"fail_url="+FRONT_SERVER+"/kakaoSub";
 						
         DataOutputStream wr = new DataOutputStream(httpConn.getOutputStream());
         wr.writeBytes(query);
