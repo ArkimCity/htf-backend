@@ -75,6 +75,17 @@ public class MachineController {
 		machineService.updateMachine(machine);
 		return "getMachineList";
 	}
+	
+	@PostMapping("/updateMachineType")
+	public String updateMachineType(@RequestBody Machine machine) {
+		if (machine.getMchId() == null) {
+			return "redirect:login";
+		}
+		Machine newMachine = machineService.findByMchId(machine.getMchId());
+		newMachine.setType(machine.getType());
+		machineService.updateMachine(newMachine);
+		return "getMachineList";
+	}
 
 //	@GetMapping("/deleteMachine")
 //	public String deleteMachine(@ModelAttribute("machine") Machine machine) {
