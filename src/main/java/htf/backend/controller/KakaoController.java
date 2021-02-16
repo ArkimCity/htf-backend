@@ -47,13 +47,13 @@ public class KakaoController {
 	}
 	
 	public static void kakaoSubPay(String memId, String sid, String rank, Timestamp t) throws Exception {
-		if(rank.equals("pro")) {
-			KakaoSubscription.requestSubscribe(sid, "5000", memId);
-		} else if(rank.equals("enterprise")) {
-			KakaoSubscription.requestSubscribe(sid, "10000", memId);
-		}
 		Calendar currentCal = Calendar.getInstance();
 		if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH))) {
+			if(rank.equals("pro")) {
+				KakaoSubscription.requestSubscribe(sid, "5000", memId);
+			} else if(rank.equals("enterprise")) {
+				KakaoSubscription.requestSubscribe(sid, "10000", memId);
+			}
 			System.out.println("it's time to Pay!");
 			t.setMonth(t.getMonth()+1);
 			Member updateMember = new Member();
