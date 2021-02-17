@@ -88,7 +88,7 @@ public class MemberController {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
 		updateMember.setMemRank(member.getMemRank());
 		memberService.updateMember(updateMember);
-		return "updateMember";
+		return updateMember.getMemRank();
 	}
 	
 	@PostMapping("/updateMemberPw")
@@ -96,7 +96,7 @@ public class MemberController {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
 		updateMember.setMemPw(member.getMemPw());
 		memberService.updateMember(updateMember);
-		return "updateMember";
+		return "updatePw";
 	}
 	
 //	@GetMapping("/deleteMember")
@@ -109,9 +109,10 @@ public class MemberController {
 //	}
 
 	@PostMapping("/updateMemberToken")
-	public void updateMemberToken(@RequestBody Member member) {
+	public String updateMemberToken(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId());
 		updateMember.setKakaoToken(member.getKakaoToken());
 		memberService.updateMember(updateMember);
+		return updateMember.getKakaoToken();
 	}
 }
