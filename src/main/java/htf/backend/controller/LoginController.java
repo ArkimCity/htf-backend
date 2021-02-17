@@ -30,11 +30,12 @@ public class LoginController {
 
 	@PostMapping(path = "/loginMember")
     public String loginMember(@RequestBody Member member) throws Exception {
-		String response = "{\"htfToken\":\"";
+		String response = null;
         try {
         	Member loginMember = memberService.findByMemId(member.getMemId());
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
         		String token = jwtService.create(member.getMemId(), loginMember, "user");
+        		response = "{\"htfToken\":\"";
         		response += token + "\", \"kakaoToken\":\"";
         		response += loginMember.getKakaoToken() + "\", \"memRank\":\"";
         		response += loginMember.getMemRank() + "\"}";
