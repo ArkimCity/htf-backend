@@ -52,7 +52,7 @@ public class LoginController {
         try {
         	Admin loginAdmin = adminService.findByAdId(admin.getAdId());
         	System.out.println(loginAdmin);
-        	if(loginAdmin != null && loginAdmin.getAdId().equals(admin.getAdId())){
+        	if(loginAdmin != null && loginAdmin.getAdPw().equals(admin.getAdPw())){
         		String token = jwtService.create(admin.getAdId(), loginAdmin, "admin");
         		response = token;
         	}
@@ -68,7 +68,7 @@ public class LoginController {
 		try {
 			Vendor loginVendor = vendorService.findByVendorId(vendor.getVendorId());
 			System.out.println(loginVendor);
-			if(loginVendor != null && loginVendor.getVendorId().equals(vendor.getVendorId())){
+			if(loginVendor != null && loginVendor.getVendorPw().equals(vendor.getVendorPw())){
 				String token = jwtService.create(vendor.getVendorId(), loginVendor, "admin");
 				response = token;
 			}

@@ -36,7 +36,7 @@ public class LoadDatabase {
 			
 //			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", Timestamp.valueOf(LocalDateTime.now()), new Admin("a2sd","sad",null))));
 
-			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "enterprise", null, null, null, Admin.builder().adId("a2sd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "enterprise", null, "kakaoTokenPosition", null, Admin.builder().adId("a2sd").build())));
 			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "pro", null, null, null, Admin.builder().adId("asd").build())));
 			log.info("Preloading " + meberRepository.save(new Member(3L, "ju", "11", "basic", null, null, null, Admin.builder().adId("a2sd").build())));
 			
