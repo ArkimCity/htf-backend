@@ -120,14 +120,6 @@ public class MemberController {
 		return updateMember.getKakaoToken();
 	}
 	
-	@PostMapping("/updateMemberId")
-	public String updateMemberId(@RequestBody Member member) {
-		Member updateMember = memberService.findByMemId(member.getMemId());
-		updateMember.setMemId(member.getMemId());
-		memberService.updateMember(updateMember);
-		return updateMember.getMemId();
-	}
-	
 	@PostMapping("/deleteMember")
 	public String deleteMember(@ModelAttribute("member") Member member) {
 		if (member.getMemId() == null) {

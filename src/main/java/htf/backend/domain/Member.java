@@ -28,7 +28,6 @@ public class Member {
 	private String email;
 	private String adress;
 	private String contact;
-	private Timestamp paymentDate;
 	private String kakaoToken;
 	private String sid;
 	private @ManyToOne Admin adId;
