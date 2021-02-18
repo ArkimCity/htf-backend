@@ -50,6 +50,17 @@ public class MeasureController {
 	public Measure getHumidMeasureListByMchIdTo1(@RequestBody Machine machine){
 		return measureService.getHumidMeasureByMchIdTo1((machine.getMchId()));
 	}
+	
+	@PostMapping("/getDustMeasureListByMchIdTo10")
+	public List<Measure> getDustMeasureListByMchIdTo10(@RequestBody Machine machine){
+		return measureService.getDustMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
+	}
+	
+	@PostMapping("/getDustMeasureListByMchIdTo1")
+	public Measure getDustMeasureListByMchIdTo1(@RequestBody Machine machine){
+		return measureService.getDustMeasureByMchIdTo1((machine.getMchId()));
+	}
+	
 	@PostMapping("/naverDust")
 	public String naverDust() throws IOException {
 		return Crawler.naverDustCrawler();

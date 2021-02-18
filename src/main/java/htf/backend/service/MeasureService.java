@@ -19,4 +19,8 @@ public interface MeasureService {
 	List<Measure> getHumidMeasureListByMchIdTo10(Machine mchId);
 	
 	Measure getHumidMeasureByMchIdTo1(String mchId);
+	
+	List<Measure> getDustMeasureListByMchIdTo10(Machine mchId);
+	
+	Measure getDustMeasureByMchIdTo1(String mchId);
 }

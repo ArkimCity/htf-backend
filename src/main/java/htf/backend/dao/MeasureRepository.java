@@ -20,4 +20,9 @@ public interface MeasureRepository extends JpaRepository<Measure, Long> {
 	List<Measure> getHumidMeasureListByMchIdTo10(Machine mchId);
 	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Percentage' order by measure_id desc) where rownum=1")
 	Measure getHumidMeasureByMchIdTo1(String mchId);
+	
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM' order by measure_id desc) where rownum<=10")
+	List<Measure> getDustMeasureListByMchIdTo10(Machine mchId);
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM' order by measure_id desc) where rownum=1")
+	Measure getDustMeasureByMchIdTo1(String mchId);
 }

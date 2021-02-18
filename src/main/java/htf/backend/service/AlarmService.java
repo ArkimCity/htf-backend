@@ -28,7 +28,7 @@ public class AlarmService {
 					Calendar cal = Calendar.getInstance();
 					// 콘솔에 현재 시간 출력
 					System.out.println(fmt.format(cal.getTime()));
-					System.out.println(measureRepo.getDangerousTemparatureMeasure());
+//					System.out.println(measureRepo.getDangerousTemparatureMeasure());
 				} catch (Exception e) {
 					e.printStackTrace();
 					// 에러 발생시 Executor를 중지시킨다

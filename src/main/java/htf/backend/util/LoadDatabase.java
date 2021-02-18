@@ -45,7 +45,6 @@ public class LoadDatabase {
 			log.info("Preloading " + machineRepository.save(new Machine("1561sadsd5", Member.builder().memKey(1L).build(), "TempSensor3","TempSensor", new Vendor("514684", "vpw"))));
 			
 			log.info("Preloading " + machineRepository.save(new Machine("adsd5ad8sd", Member.builder().memKey(1L).build(), "DustSensor1","DustSensor", new Vendor("514684", "vpw"))));
-			log.info("Preloading " + machineRepository.save(new Machine("79awd48dsd", Member.builder().memKey(1L).build(), "DustSensor2","DustSensor", new Vendor("514684", "vpw"))));
 
 			log.info("Preloading " + machineRepository.save(new Machine("af1a561fas", Member.builder().memKey(2L).build(), "TempSensor11","TempSensor",new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("51a65f1afs", Member.builder().memKey(2L).build(), "TempSensor12","TempSensor",new Vendor("514684", "vpw"))));
