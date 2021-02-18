@@ -87,6 +87,7 @@ public class MemberController {
 		memberService.updateMember(updateMember);
 		return updateMember.getEmail();
 	}
+	
 	@PostMapping("/updateMemberContact")
 	public String updateMemberContact(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
@@ -94,6 +95,7 @@ public class MemberController {
 		memberService.updateMember(updateMember);
 		return updateMember.getContact();
 	}
+	
 	@PostMapping("/updateMemberAddress")
 	public String updateMemberAddress(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
@@ -101,6 +103,7 @@ public class MemberController {
 		memberService.updateMember(updateMember);
 		return updateMember.getAdress();
 	}
+	
 	@PostMapping("/updateMemberPw")
 	public String updateMemberPw(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
@@ -109,15 +112,6 @@ public class MemberController {
 		return updateMember.getMemPw();
 	}
 	
-//	@GetMapping("/deleteMember")
-//	public String deleteMember(@ModelAttribute("member") Member member) {
-//		if (member.getMemId() == null) {
-//			return "redirect:login";
-//		}
-//		memberService.deleteMember(member);
-//		return "getMemberList";
-//	}
-
 	@PostMapping("/updateMemberToken")
 	public String updateMemberToken(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId());
@@ -125,4 +119,22 @@ public class MemberController {
 		memberService.updateMember(updateMember);
 		return updateMember.getKakaoToken();
 	}
+	
+	@PostMapping("/updateMemberId")
+	public String updateMemberId(@RequestBody Member member) {
+		Member updateMember = memberService.findByMemId(member.getMemId());
+		updateMember.setMemId(member.getMemId());
+		memberService.updateMember(updateMember);
+		return updateMember.getMemId();
+	}
+	
+	@PostMapping("/deleteMember")
+	public String deleteMember(@ModelAttribute("member") Member member) {
+		if (member.getMemId() == null) {
+			return "redirect:login";
+		}
+		memberService.deleteMember(member);
+		return "getMemberList";
+	}
+
 }
