@@ -91,12 +91,33 @@ public class MemberController {
 		return updateMember.getMemRank();
 	}
 	
+	@PostMapping("/updateMemberEmail")
+	public String updateMemberEmail(@RequestBody Member member) {
+		Member updateMember = memberService.findByMemId(member.getMemId()); 
+		updateMember.setEmail(member.getEmail());
+		memberService.updateMember(updateMember);
+		return updateMember.getEmail();
+	}
+	@PostMapping("/updateMemberContact")
+	public String updateMemberContact(@RequestBody Member member) {
+		Member updateMember = memberService.findByMemId(member.getMemId()); 
+		updateMember.setContact(member.getContact());
+		memberService.updateMember(updateMember);
+		return updateMember.getContact();
+	}
+	@PostMapping("/updateMemberAddress")
+	public String updateMemberAddress(@RequestBody Member member) {
+		Member updateMember = memberService.findByMemId(member.getMemId()); 
+		updateMember.setAdress(member.getAdress());
+		memberService.updateMember(updateMember);
+		return updateMember.getAdress();
+	}
 	@PostMapping("/updateMemberPw")
 	public String updateMemberPw(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
 		updateMember.setMemPw(member.getMemPw());
 		memberService.updateMember(updateMember);
-		return "updatePw";
+		return updateMember.getMemPw();
 	}
 	
 //	@GetMapping("/deleteMember")
