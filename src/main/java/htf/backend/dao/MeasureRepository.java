@@ -11,10 +11,13 @@ import htf.backend.domain.Measure;
 public interface MeasureRepository extends JpaRepository<Measure, Long> {
 	List<Measure> getMeasureListByMchId(Machine mchId);
 
-	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 order by measure_id desc) where rownum<=10")
-	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
-	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 order by measure_id desc) where rownum=1")
-	Measure getMeasureByMchIdTo1(String mchId);
-	@Query(nativeQuery=true, value="select * from measure where value>=58 and param='Celcius'")
-	List<Measure> getDangerousTemparatureMeasure();
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Celcius' order by measure_id desc) where rownum<=10")
+	List<Measure> getTempMeasureListByMchIdTo10(Machine mchId);
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Celcius' order by measure_id desc) where rownum=1")
+	Measure getTempMeasureByMchIdTo1(String mchId);
+	
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Percentage' order by measure_id desc) where rownum<=10")
+	List<Measure> getHumidMeasureListByMchIdTo10(Machine mchId);
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Percentage' order by measure_id desc) where rownum=1")
+	Measure getHumidMeasureByMchIdTo1(String mchId);
 }

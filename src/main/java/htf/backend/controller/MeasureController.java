@@ -31,22 +31,25 @@ public class MeasureController {
 		return measureService.getMeasureListByMchId(machineService.findByMchId(machine.getMchId()));
 	}
 	
-	@PostMapping("/getMeasureListByMchIdTo10")
-	public List<Measure> getMeasureListByMchIdTo10(@RequestBody Machine machine){
-		return measureService.getMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
+	@PostMapping("/getTempMeasureListByMchIdTo10")
+	public List<Measure> getTempMeasureListByMchIdTo10(@RequestBody Machine machine){
+		return measureService.getTempMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
 	}
 	
-	@PostMapping("/getMeasureListByMchIdTo1")
-	public Measure getMeasureListByMchIdTo1(@RequestBody Machine machine){
-		return measureService.getMeasureByMchIdTo1((machine.getMchId()));
+	@PostMapping("/getTempMeasureListByMchIdTo1")
+	public Measure getTempMeasureListByMchIdTo1(@RequestBody Machine machine){
+		return measureService.getTempMeasureByMchIdTo1((machine.getMchId()));
 	}
 	
-	@PostMapping("/tempCheck")
-	public List<Measure> tempCheck(){
-		System.out.println(measureService.getDangerousTemparatureMeasure());
-		return measureService.getDangerousTemparatureMeasure();
+	@PostMapping("/getHumidMeasureListByMchIdTo10")
+	public List<Measure> getHumidMeasureListByMchIdTo10(@RequestBody Machine machine){
+		return measureService.getHumidMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
 	}
 	
+	@PostMapping("/getHumidMeasureListByMchIdTo1")
+	public Measure getHumidMeasureListByMchIdTo1(@RequestBody Machine machine){
+		return measureService.getHumidMeasureByMchIdTo1((machine.getMchId()));
+	}
 	@PostMapping("/naverDust")
 	public String naverDust() throws IOException {
 		return Crawler.naverDustCrawler();

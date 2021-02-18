@@ -35,20 +35,23 @@ public class MeasureServiceImpl implements MeasureService {
 	}
 
 	@Override
-	public List<Measure> getMeasureListByMchIdTo10(Machine mchId) {
-		return measureRepo.getMeasureListByMchIdTo10(mchId);
-	}
-
-
-	@Override
-	public Measure getMeasureByMchIdTo1(String mchId) {
-		return measureRepo.getMeasureByMchIdTo1(mchId);
+	public List<Measure> getTempMeasureListByMchIdTo10(Machine mchId) {
+		return measureRepo.getTempMeasureListByMchIdTo10(mchId);
 	}
 
 	@Override
-	public List<Measure> getDangerousTemparatureMeasure() {
-		return measureRepo.getDangerousTemparatureMeasure();
+	public Measure getTempMeasureByMchIdTo1(String mchId) {
+		return measureRepo.getTempMeasureByMchIdTo1(mchId);
 	}
-
+	
+	@Override
+	public List<Measure> getHumidMeasureListByMchIdTo10(Machine mchId) {
+		return measureRepo.getHumidMeasureListByMchIdTo10(mchId);
+	}
+	
+	@Override
+	public Measure getHumidMeasureByMchIdTo1(String mchId) {
+		return measureRepo.getHumidMeasureByMchIdTo1(mchId);
+	}
 
 }

@@ -12,9 +12,11 @@ public interface MeasureService {
 	
 	List<Measure> getMeasureListByMchId(Machine mchId);
 	
-	List<Measure> getMeasureListByMchIdTo10(Machine mchId);
+	List<Measure> getTempMeasureListByMchIdTo10(Machine mchId);
 	
-	List<Measure> getDangerousTemparatureMeasure();
+	Measure getTempMeasureByMchIdTo1(String mchId);
 	
-	Measure getMeasureByMchIdTo1(String mchId);
+	List<Measure> getHumidMeasureListByMchIdTo10(Machine mchId);
+	
+	Measure getHumidMeasureByMchIdTo1(String mchId);
 }
