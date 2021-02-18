@@ -25,17 +25,6 @@ public class MemberController {
 		return new Member();
 	}
 
-	
-	@PostMapping("kakaoSub2")
-	public void kakaoSub() {
-		Member m = memberService.findByMemId("sh");
-		System.out.println(m);
-		m.setMemRank("test");
-		System.out.println("update");
-		memberService.updateMember(m);
-		m = memberService.findByMemId("sh");
-		System.out.println(m);
-	}
 //	@RequestMapping("/getMemberList")
 //	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model) {
 //		if (member.getMemId() == null) {
@@ -75,12 +64,12 @@ public class MemberController {
 	}
 
 	@PostMapping("/getMember")
-	public String getMember(@RequestBody Member member) {
+	public Member getMember(@RequestBody Member member) {
 		if (member.getMemId() == null) {
-			return "redirect:login";
+			return null;
 		}
-		memberService.findByMemId(member.getMemId());
-		return "getMember";
+		Member findMember = memberService.findByMemId(member.getMemId());
+		return findMember;
 	}
 
 	@PostMapping("/updateMemberRank")
