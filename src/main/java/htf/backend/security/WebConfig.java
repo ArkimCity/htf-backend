@@ -17,8 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
         "/tempCheck",
         "/error/**",
         "/getAdIdByMchId",
-        "/fireKakao",
-        "/kakaoSub"
+        "/fireKakao"
     };
  
     @Autowired

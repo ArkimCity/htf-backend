@@ -34,12 +34,10 @@ public class MachineController {
 	}
 
 	@PostMapping("/insertMachine")
-	public String insertMachine(@RequestBody Machine machine) {
-		if (machine.getMchId() == null) {
-			return "redirect:login";
-		}
+	public void insertMachine(@RequestBody Machine machine) throws Exception {
+		machine.setMemId(memberService.findByMemId(machine.getMemId().getMemId()));
+		machine.setVendorId(vendorService.findByVendorId(machine.getVendorId().getVendorId()));
 		machineService.insertMachine(machine);
-		return "getMachineList";
 	}
 
 	@PostMapping("/getAdIdByMchId")
