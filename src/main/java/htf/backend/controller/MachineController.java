@@ -24,6 +24,7 @@ public class MachineController {
 	
 	@Autowired
 	private MemberService memberService;
+	
 	@Autowired
 	private VendorService vendorService;
 	
@@ -31,22 +32,6 @@ public class MachineController {
 	public Machine setMachine() {
 		return new Machine();
 	}
-
-//	@RequestMapping("/getMachineList")
-//	public List<Machine> getMachineList(@ModelAttribute("machine") Machine machine, Model model) {
-//		if (machine.getMchId() == null) {//?
-//		}
-//		List<Machine> machineList = machineService.getMachineList(machine);
-//		model.addAttribute("machineList", machineList);
-//		return machineList;
-//	}
-
-//	@GetMapping("/insertMachine")
-//	public String insertMachineView(@RequestBody Machine machine) {
-//		if (machine.getMchId() == null) {
-//			return "redirect:login";
-//		return "insertMachine";
-//	}
 
 	@PostMapping("/insertMachine")
 	public String insertMachine(@RequestBody Machine machine) {
