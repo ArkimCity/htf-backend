@@ -87,14 +87,12 @@ public class MachineController {
 		return "getMachineList";
 	}
 
-//	@GetMapping("/deleteMachine")
-//	public String deleteMachine(@ModelAttribute("machine") Machine machine) {
-//		if (machine.getMchId() == null) {
-//			return "redirect:login";
-//		}
-//		machineService.deleteMachine(machine);
-//		return "getMachineList";
-//	}
+	@PostMapping("/deleteMachine")
+	public String deleteMachine(@RequestBody Machine machine) {
+		Machine deleteMachine = machineService.getMachine(machine);
+		machineService.deleteMachine(deleteMachine);
+		return "deleteMachine";
+	}
 	
 	@PostMapping("/getMachineListByMemId")
 	public List<Machine> getMachineListByMemId(@RequestBody Member member) {

@@ -23,4 +23,6 @@ public interface MeasureService {
 	List<Measure> getDustMeasureListByMchIdTo10(Machine mchId);
 	
 	Measure getDustMeasureByMchIdTo1(String mchId);
+
+	void deleteByMchId(Machine mchId);
 }

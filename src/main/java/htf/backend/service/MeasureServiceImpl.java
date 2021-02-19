@@ -24,7 +24,11 @@ public class MeasureServiceImpl implements MeasureService {
 			return null;
 		}
 	}
-
+	
+	public void deleteByMchId(Machine mchId) {
+		measureRepo.deleteByMchId(mchId);
+	}
+	
 	public List<Measure> getMeasureList(Measure measure) {
 		return (List<Measure>) measureRepo.findAll();
 	}

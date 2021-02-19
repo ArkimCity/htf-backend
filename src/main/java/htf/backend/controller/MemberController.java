@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
+import htf.backend.domain.Machine;
 import htf.backend.domain.Member;
+import htf.backend.service.MachineService;
 import htf.backend.service.MemberService;
 
 @CrossOrigin
@@ -19,6 +21,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MachineService machineService;
 
 	@ModelAttribute("member")
 	public Member setMember() {
@@ -99,9 +104,9 @@ public class MemberController {
 	@PostMapping("/updateMemberAddress")
 	public String updateMemberAddress(@RequestBody Member member) {
 		Member updateMember = memberService.findByMemId(member.getMemId()); 
-		updateMember.setAdress(member.getAdress());
+		updateMember.setAddress(member.getAddress());
 		memberService.updateMember(updateMember);
-		return updateMember.getAdress();
+		return updateMember.getAddress();
 	}
 	
 	@PostMapping("/updateMemberPw")
@@ -121,12 +126,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("/deleteMember")
-	public String deleteMember(@ModelAttribute("member") Member member) {
-		if (member.getMemId() == null) {
-			return "redirect:login";
-		}
-		memberService.deleteMember(member);
-		return "getMemberList";
+	public String deleteMember(@RequestBody Member member) {
+		Member deleteMember = memberService.findByMemId(member.getMemId());
+		memberService.deleteMember(deleteMember);
+		return "deleteMember";
 	}
 
 }

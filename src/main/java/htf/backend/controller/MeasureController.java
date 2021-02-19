@@ -75,4 +75,9 @@ public class MeasureController {
 	public String naverHumidtyCrawler() throws IOException {
 		return Crawler.naverHumidtyCrawler();
 	}
+	
+	@PostMapping("/deleteMeasurebyMchId")
+	public void deleteMeasurebyMchId(Machine mchId) {
+		measureService.deleteByMchId(mchId);
+	}
 }

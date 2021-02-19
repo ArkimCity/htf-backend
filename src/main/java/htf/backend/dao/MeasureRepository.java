@@ -10,6 +10,7 @@ import htf.backend.domain.Measure;
 
 public interface MeasureRepository extends JpaRepository<Measure, Long> {
 	List<Measure> getMeasureListByMchId(Machine mchId);
+	void deleteByMchId(Machine mchId);
 
 	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Celcius' order by measure_id desc) where rownum<=10")
 	List<Measure> getTempMeasureListByMchIdTo10(Machine mchId);

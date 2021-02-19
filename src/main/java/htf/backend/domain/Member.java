@@ -3,11 +3,15 @@ package htf.backend.domain;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,9 +30,9 @@ public class Member {
 	private @Column(name="mem_pw") String memPw;
 	private @Column(name="mem_rank")String memRank;
 	private String email;
-	private String adress;
+	private String address;
 	private String contact;
 	private String kakaoToken;
 	private String sid;
-	private @ManyToOne Admin adId;
+	private @ManyToOne @OnDelete(action = OnDeleteAction.CASCADE) Admin adId;
 } 
