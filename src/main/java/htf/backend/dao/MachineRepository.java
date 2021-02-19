@@ -12,4 +12,5 @@ public interface MachineRepository extends JpaRepository<Machine, String> {
 	List<Machine> getMachineListByMemId(Member memId);
 	List<Machine> getMachineListByVendorId(Vendor vendorId);
 	Machine findByMchId(String mchId);
+	
 }

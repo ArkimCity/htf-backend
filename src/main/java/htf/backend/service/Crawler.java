@@ -1,9 +1,7 @@
 package htf.backend.service;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -11,9 +9,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 
 public class Crawler {
 	public static void main(String[] args) throws IOException {

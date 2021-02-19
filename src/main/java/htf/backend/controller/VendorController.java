@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import htf.backend.domain.Machine;
 import htf.backend.domain.Vendor;
+import htf.backend.service.MachineService;
 import htf.backend.service.VendorService;
 
 @CrossOrigin
@@ -17,20 +19,13 @@ public class VendorController {
 	@Autowired
 	private VendorService vendorService;
 	
+	@Autowired
+	private MachineService machineService;
+	
 	@ModelAttribute("vendor")
 	public Vendor setVendor() {
 		return new Vendor();
 	}
-
-//	@RequestMapping("/getVendorList")
-//	public List<Vendor> getVendorList(@ModelAttribute("vendor") Vendor vendor, Model model) {
-//		if (vendor.getVendorId() == null) {//?
-//		}
-//		List<Vendor> vendorList = vendorService.getVendorList(vendor);
-//		System.out.println(vendorList);
-//		model.addAttribute("vendorList", vendorList);
-//		return vendorList;
-//	}
 
 	@PostMapping("/insertVendor")
 	public String insertVendor(@RequestBody Vendor vendor) {
@@ -40,31 +35,12 @@ public class VendorController {
 		vendorService.insertVendor(vendor);
 		return "insertVendor";
 	}
-//
-//	@GetMapping("/getVendor")
-//	public String getVendor(@ModelAttribute("vendor")Vendor vendor, Model model) {
-//		if (vendor.getVendorId() == null) {
-//			return "redirect:login";
-//		}
-//		model.addAttribute("vendor", vendorService.getVendor(vendor));
-//		return "getVendor";
-//	}
-
-//	@PostMapping("/updateVendor")
-//	public String updateVendor(@ModelAttribute("vendor") Vendor vendor) {
-//		if (vendor.getVendorId() == null) {
-//			return "redirect:login";
-//		}
-//		vendorService.updateVendor(vendor);
-//		return "getVendorList";
-//	}
-
-//	@GetMapping("/deleteVendor")
-//	public String deleteVendor(@ModelAttribute("vendor") Vendor vendor) {
-//		if (vendor.getVendorId() == null) {
-//			return "redirect:login";
-//		}
-//		vendorService.deleteVendor(vendor);
-//		return "getVendorList";
-//	}
+	
+	
+	@PostMapping("/deleteMachineByMchId")
+	public String deleteMachine(@RequestBody Machine machine) {
+		Machine deleteMachine = machineService.getMachine(machine);
+		machineService.deleteMachine(deleteMachine);
+		return "deleteMachine";
+	}
 }

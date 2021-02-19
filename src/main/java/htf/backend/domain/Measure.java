@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Measure {
 	private @Id @GeneratedValue(generator="measure_seq") @Column(name="measure_id") Long measureId;
-	private @ManyToOne @JoinColumn(name="mch_id") Machine mchId;
+	private @ManyToOne @JoinColumn(name="mch_id") @OnDelete(action = OnDeleteAction.CASCADE) Machine mchId;
 	private String mchcd;
 	private String param;
 	private Double value;

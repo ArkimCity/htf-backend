@@ -1,14 +1,10 @@
 package htf.backend.controller;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,21 +57,8 @@ public class KakaoController {
 						} else if(rank.equals("enterprise")) {
 							KakaoPayService.requestSubscribe(sid, "10000", memId);
 						}
-						//check if it is time for payment
-//						Calendar currentCal = Calendar.getInstance();
-//						if(!t.equals(null) && (t.getDate() == currentCal.get(Calendar.DATE) && t.getMonth() == currentCal.get(Calendar.MONTH))) {
-//							System.out.println("it's time to Pay!");
-//							t.setMonth(t.getMonth()+1);
-//							System.out.println("new pay date is : "+t);
-//							subMember.setPaymentDate(t);
-//							memberService.updateMember(subMember);
-//						} else {
-//							System.out.println("t : "+t.getMonth() + ", date : "+t.getDate());
-//							System.out.println("curcal : "+currentCal.get(Calendar.MONTH) + ", date : "+currentCal.get(Calendar.DATE));
-//						}
 					} catch (Exception e) {
 						e.printStackTrace();
-						// 에러 발생시 Executor를 중지시킨다
 						exec.shutdown();
 					}
 				}

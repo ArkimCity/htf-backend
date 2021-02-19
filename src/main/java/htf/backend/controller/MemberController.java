@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import htf.backend.domain.Admin;
-import htf.backend.domain.Machine;
 import htf.backend.domain.Member;
-import htf.backend.service.MachineService;
 import htf.backend.service.MemberService;
 
 @CrossOrigin
@@ -22,23 +20,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@Autowired
-	private MachineService machineService;
-
 	@ModelAttribute("member")
 	public Member setMember() {
 		return new Member();
 	}
 
-//	@RequestMapping("/getMemberList")
-//	public List<Member> getMemberList(@ModelAttribute("member") Member member, Model model) {
-//		if (member.getMemId() == null) {
-//		}
-//		List<Member> memberList = memberService.getMemberList(member);
-//		System.out.println(memberList);
-//		model.addAttribute("memberList", memberList);
-//		return memberList;
-//	}
 	
 	@PostMapping("/getMemberListByAdId")
 	public List<Member> getMemberListByAdId(@RequestBody Admin admin) {
@@ -50,13 +36,7 @@ public class MemberController {
 		return memberList;
 	}
 
-//	@GetMapping("/insertMember")
-//	public String insertMemberView(@ModelAttribute("member") Member member) {
-//		if (member.getMemId() == null) {
-//			return "redirect:login";
-//		}
-//		return "insertMember";
-//	}
+
 
 	@PostMapping("/insertMember")
 	public String insertMember(@RequestBody Member member) {
