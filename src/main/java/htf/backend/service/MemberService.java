@@ -13,7 +13,7 @@ public interface MemberService {
 	
 	Member findByMemId(String memId);
 	
-	List<Member> getMemberList(Member member);
+	List<Member> getMemberList();
 
 	void insertMember(Member member);
 

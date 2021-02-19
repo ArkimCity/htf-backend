@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-	public List<Member> getMemberList(Member member) {
+	public List<Member> getMemberList() {
 		return (List<Member>) memberRepo.findAll();
 	}
 

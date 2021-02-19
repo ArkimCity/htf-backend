@@ -26,6 +26,12 @@ public class MemberController {
 	}
 
 	
+	@PostMapping("/getMemberList")
+	public List<Member> getMemberList() {
+		List<Member> memberList = memberService.getMemberList();
+		return memberList;
+	}
+	
 	@PostMapping("/getMemberListByAdId")
 	public List<Member> getMemberListByAdId(@RequestBody Admin admin) {
 		if (admin == null) {
