@@ -34,11 +34,9 @@ public class LoadDatabase {
 			
 			log.info("Preloading " + vendorRespository.save(new Vendor("514684", "vpw")));
 			
-//			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "silver", Timestamp.valueOf(LocalDateTime.now()), new Admin("a2sd","sad",null))));
-
-			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "enterprise", null, null, null, "kakaoTokenPosition", null, Admin.builder().adId("a2sd").build())));
-			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "pro", null, null, null, null, null, Admin.builder().adId("asd").build())));
-			log.info("Preloading " + meberRepository.save(new Member(3L, "ju", "11", "basic",  null, null, null, null, null, Admin.builder().adId("a2sd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(1L, "sh", "11", "enterprise", "sh@test.com", "101동 101호", "010-1234-5678", "kakaoTokenPosition", "kakaoSidPosition", Admin.builder().adId("a2sd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(2L, "om", "11", "pro", "om@test.com", "101동 102호", "010-8765-4321", null, null, Admin.builder().adId("asd").build())));
+			log.info("Preloading " + meberRepository.save(new Member(3L, "ju", "11", "basic",  "ju@test.com", "101동 103호", "010-1357-2468", null, null, Admin.builder().adId("a2sd").build())));
 			
 			log.info("Preloading " + machineRepository.save(new Machine("4561a65s1f", Member.builder().memKey(1L).build(), "TempHumidSensor1","TempHumidSensor", new Vendor("514684", "vpw"))));
 			log.info("Preloading " + machineRepository.save(new Machine("7879awdd48", Member.builder().memKey(1L).build(), "TempSensor2","TempSensor", new Vendor("514684", "vpw"))));
