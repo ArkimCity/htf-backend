@@ -17,8 +17,7 @@ public class AlarmController {
 
 	@Autowired
 	private AdminService adminService;
-	
-	@Autowired
+
 	private KakaoTalkService kakaoService;
 	
 	@PostMapping(path = "/fireKakao")
