@@ -1,4 +1,4 @@
-package htf.backend.subscription;
+package htf.backend.kakao;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -6,19 +6,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import htf.backend.domain.Member;
-import htf.backend.service.MemberService;
-
-
-public class KakaoSubscription {
+public class KakaoPayService {
+	public static String memId = "";
+	public static String tid = "";
 	
 	public static JSONObject requestPayment(String memId, String rank, String price, String FRONT_SERVER) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
@@ -91,7 +84,6 @@ public class KakaoSubscription {
         in.close();
         System.out.println(response.toString());
         JSONObject res = new JSONObject(response.toString());
-        System.out.println("sid : "+res.getString("sid"));
         return res;
 	}
 	

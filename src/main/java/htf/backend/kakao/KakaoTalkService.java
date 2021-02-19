@@ -14,7 +14,7 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 
-public class KakaoService {
+public class KakaoTalkService {
 	@Autowired
 	private AdminService adminService;
 	
@@ -77,7 +77,7 @@ public class KakaoService {
 				+ "\"}"
 				+ "&receiver_uuids=";
 		
-		KakaoService ks = new KakaoService();
+		KakaoTalkService ks = new KakaoTalkService();
 		clientList.forEach((key, val)->{
 			ks.uuidList += val+",";
 		});
