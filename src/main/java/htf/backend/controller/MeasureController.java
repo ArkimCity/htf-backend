@@ -61,7 +61,7 @@ public class MeasureController {
 		return measureService.getDustMeasureByMchIdTo1((machine.getMchId()));
 	}
 	
-	@PostMapping("/naverDust")
+	@GetMapping("/naverDust")
 	public String naverDust() throws IOException {
 		return Crawler.naverDustCrawler();
 	}
@@ -76,7 +76,7 @@ public class MeasureController {
 		return Crawler.naverHumidtyCrawler();
 	}
 	
-	@GetMapping("/deleteMeasurebyMchId")
+	@PostMapping("/deleteMeasurebyMchId")
 	public void deleteMeasurebyMchId(Machine mchId) {
 		measureService.deleteByMchId(mchId);
 	}
