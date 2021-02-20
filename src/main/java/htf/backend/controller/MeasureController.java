@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,17 +66,17 @@ public class MeasureController {
 		return Crawler.naverDustCrawler();
 	}
 	
-	@PostMapping("/naverTempCrawler")
+	@GetMapping("/naverTempCrawler")
 	public String naverTempCrawler() throws IOException {
 		return Crawler.naverTempCrawler();
 	}
 	
-	@PostMapping("/naverHumidtyCrawler")
+	@GetMapping("/naverHumidtyCrawler")
 	public String naverHumidtyCrawler() throws IOException {
 		return Crawler.naverHumidtyCrawler();
 	}
 	
-	@PostMapping("/deleteMeasurebyMchId")
+	@GetMapping("/deleteMeasurebyMchId")
 	public void deleteMeasurebyMchId(Machine mchId) {
 		measureService.deleteByMchId(mchId);
 	}
