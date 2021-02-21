@@ -48,8 +48,8 @@ public class LoadDatabase {
 			
 			log.info("Preloading " + measureRepository.save(new Measure(1L, Machine.builder().mchId("4561a65s1f").build(), "DHT11", "Celcius", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
 			log.info("Preloading " + measureRepository.save(new Measure(2L, Machine.builder().mchId("4561a65s1f").build(), "DHT11", "Percentage", Double.valueOf(80), (System.currentTimeMillis()) ,null)));
-			log.info("Preloading " + measureRepository.save(new Measure(3L, Machine.builder().mchId("adsd5ad8sd").build(), "PM2058", "PM10micrometer", Double.valueOf(40), (System.currentTimeMillis()) ,null)));
-			log.info("Preloading " + measureRepository.save(new Measure(4L, Machine.builder().mchId("adsd5ad8sd").build(), "PM2058", "PM2.5micrometer", Double.valueOf(25), (System.currentTimeMillis()) ,null)));
+			log.info("Preloading " + measureRepository.save(new Measure(3L, Machine.builder().mchId("adsd5ad8sd").build(), "PM2008", "PM10micrometer", Double.valueOf(40), (System.currentTimeMillis()) ,null)));
+			log.info("Preloading " + measureRepository.save(new Measure(4L, Machine.builder().mchId("adsd5ad8sd").build(), "PM2008", "PM2.5micrometer", Double.valueOf(25), (System.currentTimeMillis()) ,null)));
 			
 		};
 	}
