@@ -46,6 +46,7 @@ public class AdminController {
 	public void updateAdminToken(@RequestBody Admin admin) {
 		Admin updateAdmin = adminService.findByAdId(admin.getAdId());
 		updateAdmin.setKakaoToken(admin.getKakaoToken());
-		adminService.updateAdmin(updateAdmin);
+		System.out.println(updateAdmin);
+		adminService.updateAdminToken(updateAdmin);
 	}
 }

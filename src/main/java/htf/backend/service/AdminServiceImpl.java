@@ -37,6 +37,11 @@ public class AdminServiceImpl implements AdminService {
 		findAdmin.setAdPw(admin.getAdPw());
 		adminRepo.save(findAdmin);
 	}
+	
+	public void updateAdminToken(Admin admin) {
+		Admin findAdmin = adminRepo.findByAdId(admin.getAdId());
+		adminRepo.save(findAdmin);
+	}
 
 	public void deleteAdmin(Admin admin) {
 		adminRepo.deleteById(admin.getAdId());

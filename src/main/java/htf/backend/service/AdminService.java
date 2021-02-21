@@ -18,6 +18,8 @@ public interface AdminService {
 
 	void updateAdmin(Admin admin);
 
+	void updateAdminToken(Admin admin);
+
 	void deleteAdmin(Admin admin);
 
 }

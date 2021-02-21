@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Member { 
 	private @Id @GeneratedValue @Column(name="mem_key")Long memKey; 
-	private @Column(name="mem_id") String memId;
+	private @Column(name="mem_id", unique=true) String memId;
 	private @Column(name="mem_pw") String memPw;
 	private @Column(name="mem_rank")String memRank;
 	private String email;
