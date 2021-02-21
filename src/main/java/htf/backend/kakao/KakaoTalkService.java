@@ -62,9 +62,9 @@ public class KakaoTalkService {
 		httpConn.setConnectTimeout(10000);       //컨텍션타임아웃 10초
 		httpConn.setReadTimeout(5000);
 		
-		String text = "this is test message";
-		String link = "http://www.naver.com";
-		String button_title = "move to naver";
+		String text = "fire alarm";
+		String link = "https://map.naver.com/v5/search/%EC%86%8C%EB%B0%A9%EC%84%9C";
+		String button_title = "please call to the fire station";
 		httpConn.setDoOutput(true);
 		
 		String query = 
