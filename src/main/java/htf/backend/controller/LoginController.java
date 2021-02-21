@@ -34,7 +34,7 @@ public class LoginController {
         try {
         	Member loginMember = memberService.findByMemId(member.getMemId());
         	if(loginMember != null && loginMember.getMemPw().equals(member.getMemPw())){
-        		String token = jwtService.create(member.getMemId(), loginMember, "user");
+        		String token = jwtService.create("userId", loginMember.getMemId(), "user");
         		response = "{\"htfToken\":\"";
         		response += token + "\", \"kakaoToken\":\"";
         		response += loginMember.getKakaoToken() + "\", \"memRank\":\"";
@@ -51,9 +51,8 @@ public class LoginController {
     	String response = null;
         try {
         	Admin loginAdmin = adminService.findByAdId(admin.getAdId());
-        	System.out.println(loginAdmin);
         	if(loginAdmin != null && loginAdmin.getAdPw().equals(admin.getAdPw())){
-        		String token = jwtService.create(admin.getAdId(), loginAdmin, "admin");
+        		String token = jwtService.create("userId",admin.getAdId(), "admin");
         		response = token;
         	}
         } catch(Exception e) {
@@ -69,7 +68,7 @@ public class LoginController {
 			Vendor loginVendor = vendorService.findByVendorId(vendor.getVendorId());
 			System.out.println(loginVendor);
 			if(loginVendor != null && loginVendor.getVendorPw().equals(vendor.getVendorPw())){
-				String token = jwtService.create(vendor.getVendorId(), loginVendor, "admin");
+				String token = jwtService.create("userId",vendor.getVendorId(), "vendor");
 				response = token;
 			}
 		} catch(Exception e) {
