@@ -22,8 +22,13 @@ public interface MeasureRepository extends JpaRepository<Measure, Long> {
 	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='Percentage' order by measure_id desc) where rownum=1")
 	Measure getHumidMeasureByMchIdTo1(String mchId);
 	
-	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM' order by measure_id desc) where rownum<=10")
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM2.5micrometer' order by measure_id desc) where rownum<=10")
 	List<Measure> getDustMeasureListByMchIdTo10(Machine mchId);
-	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM' order by measure_id desc) where rownum=1")
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM2.5micrometer' order by measure_id desc) where rownum=1")
 	Measure getDustMeasureByMchIdTo1(String mchId);
+	
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM10micrometer' order by measure_id desc) where rownum<=10")
+	List<Measure> getDustTenMeasureListByMchIdTo10(Machine mchId);
+	@Query(nativeQuery=true, value="select * from (select * from measure where mch_id = ?1 and param='PM10micrometer' order by measure_id desc) where rownum=1")
+	Measure getDustTenMeasureListByMchIdTo1(String mchId);
 }

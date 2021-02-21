@@ -22,7 +22,6 @@ public class MeasureController {
 
 	@Autowired
 	private MeasureService measureService;
-	
 	@Autowired
 	private MachineService machineService;
 	
@@ -59,6 +58,16 @@ public class MeasureController {
 	@PostMapping("/getDustMeasureListByMchIdTo1")
 	public Measure getDustMeasureListByMchIdTo1(@RequestBody Machine machine){
 		return measureService.getDustMeasureByMchIdTo1((machine.getMchId()));
+	}
+	
+	@PostMapping("/getDustTenMeasureListByMchIdTo10")
+	public List<Measure> getDustTenMeasureListByMchIdTo10(@RequestBody Machine machine){
+		return measureService.getDustTenMeasureListByMchIdTo10(machineService.findByMchId(machine.getMchId()));
+	}
+	
+	@PostMapping("/getDustTenMeasureListByMchIdTo1")
+	public Measure getDustTenMeasureListByMchIdTo1(@RequestBody Machine machine){
+		return measureService.getDustTenMeasureListByMchIdTo1((machine.getMchId()));
 	}
 	
 	@GetMapping("/naverDust")

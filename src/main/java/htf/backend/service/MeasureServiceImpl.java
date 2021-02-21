@@ -67,5 +67,15 @@ public class MeasureServiceImpl implements MeasureService {
 	public Measure getDustMeasureByMchIdTo1(String mchId) {
 		return measureRepo.getDustMeasureByMchIdTo1(mchId);
 	}
+	
+	@Override
+	public List<Measure> getDustTenMeasureListByMchIdTo10(Machine mchId) {
+		return measureRepo.getDustTenMeasureListByMchIdTo10(mchId);
+	}
+	
+	@Override
+	public Measure getDustTenMeasureListByMchIdTo1(String mchId) {
+		return measureRepo.getDustTenMeasureListByMchIdTo1(mchId);
+	}
 
 }
