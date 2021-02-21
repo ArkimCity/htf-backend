@@ -79,9 +79,9 @@ public class KakaoTalkService {
 		
 		KakaoTalkService ks = new KakaoTalkService();
 		clientList.forEach((key, val)->{
-			ks.uuidList += val+",";
+			ks.uuidList += val+"\",\"";
 		});
-		ks.uuidList = ks.uuidList.substring(0, ks.uuidList.length()-1);
+		ks.uuidList = ks.uuidList.substring(0, ks.uuidList.length()-3);
 		ks.uuidList += "\"]";
 		System.out.println(ks.uuidList);
 		query += ks.uuidList;
