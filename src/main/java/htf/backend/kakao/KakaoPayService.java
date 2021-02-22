@@ -16,7 +16,7 @@ public class KakaoPayService {
 	public static JSONObject requestPayment(String memId, String rank, String price, String FRONT_SERVER) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
-		httpConn.setRequestProperty("Authorization", "KakaoAK 00be08dbea9adcaf1c25cb61cd9fabd1");
+		httpConn.setRequestProperty("Authorization", "KakaoAK 3ea121dd4504109bcd4ea7a6c63de3ae");
 		httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		httpConn.setRequestMethod("POST");
 		httpConn.setConnectTimeout(10000);       //컨텍션타임아웃 10초
@@ -55,7 +55,7 @@ public class KakaoPayService {
 	public static JSONObject requestApprove(String tid, String pg_token, String memId) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/approve";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
-		httpConn.setRequestProperty("Authorization", "KakaoAK 00be08dbea9adcaf1c25cb61cd9fabd1");
+		httpConn.setRequestProperty("Authorization", "KakaoAK 3ea121dd4504109bcd4ea7a6c63de3ae");
 		httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		httpConn.setRequestMethod("POST");
 		httpConn.setConnectTimeout(10000);       //컨텍션타임아웃 10초
@@ -90,7 +90,7 @@ public class KakaoPayService {
 	public static void requestSubscribe(String sid, String price, String memId) throws Exception {
 		String url = "https://kapi.kakao.com/v1/payment/subscription";
 		HttpURLConnection httpConn = (HttpURLConnection) new URL(url).openConnection();
-		httpConn.setRequestProperty("Authorization", "KakaoAK 00be08dbea9adcaf1c25cb61cd9fabd1");
+		httpConn.setRequestProperty("Authorization", "KakaoAK 3ea121dd4504109bcd4ea7a6c63de3ae");
 		httpConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		httpConn.setRequestMethod("POST");
 		httpConn.setConnectTimeout(10000);       //컨텍션타임아웃 10초
