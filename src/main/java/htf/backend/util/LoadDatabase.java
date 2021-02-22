@@ -29,7 +29,7 @@ public class LoadDatabase {
 		
 		return args -> {
 			log.info("Preloading " + adminRepository.save(new Admin("admin1","11",null)));
-			log.info("Preloading " + adminRepository.save(new Admin("admin2","sad","21UGbv_hZKm4A10QAp99Yg31OJE_KjKg3yMDJgorDR4AAAF3n-gUjg")));
+			log.info("Preloading " + adminRepository.save(new Admin("admin2","sad",null)));
 			
 			log.info("Preloading " + vendorRespository.save(new Vendor("vendor1", "11")));
 			
