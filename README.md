@@ -64,7 +64,7 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 
 ### Front-end
 
-- 펼치기 / 접기
+- Vue CLI server
 
     ```jsx
     ./
@@ -88,14 +88,14 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 
 ### Back-end
 
-- 펼치기 / 접기
+- Rest Controller / Spring Boot / JPA / Oracle linked
 
     ```java
     ./
     ├── src/
-    |		├── htf.backend/                    
+    |       ├── htf.backend/                    
     |   |   ├── controller/                 # 컨트롤러
-    |	|   ├── dao/                        # DAO
+    |   |   ├── dao/                        # DAO
     |   |   ├── domain/                     # ENTITY
     |   |   ├── exception/                  # 예외처리
     |   |   ├── kakao/                      # KAKAO API
@@ -109,7 +109,7 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 
 ### Sub Chat Server
 
-- 펼치기 / 접기
+- node.js server / socket.io / mysql linked
 
     ```java
     ./
