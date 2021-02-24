@@ -73,17 +73,17 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
     ├── src/                                # 소스 파일
         ├── asset/                          # 어셋 파일
         ├── components/                     # 컴포넌트
-    		├── components/                     # 라우터
+        ├── router/                         # 라우터
         ├── store/                          # 스토어
         └── views/                          # 페이지(뷰) 컴포넌트
-    				├── Admin/                     
-    				├── Dashbooard/
-    				├── Kakao/
-    				├── Login/
-    				├── Member/
-    				├── Modal/
-    				├── Updates/
-    				└── Vendor/
+            ├── Admin/                     
+            ├── Dashbooard/
+            ├── Kakao/
+            ├── Login/
+            ├── Member/
+            ├── Modal/
+            ├── Updates/
+            └── Vendor/
     ```
 
 ### Back-end
@@ -95,7 +95,7 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
     ├── src/
     |		├── htf.backend/                    
     |   |   ├── controller/                 # 컨트롤러
-    |		|   ├── dao/                        # DAO
+    |	|   ├── dao/                        # DAO
     |   |   ├── domain/                     # ENTITY
     |   |   ├── exception/                  # 예외처리
     |   |   ├── kakao/                      # KAKAO API
