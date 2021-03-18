@@ -16,7 +16,13 @@
 	<name>htf-backend</name>
 	<description>htf-backend</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<start-class>htf.backend.HtfBackendApplication</start-class>
+		<webapp.lib>${basedir}/src/lib</webapp.lib>
 	</properties>
 	<dependencies>
 		<dependency>
