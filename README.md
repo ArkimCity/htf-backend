@@ -24,7 +24,7 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 
 # Architecture
 
-![Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/Untitled%201.png](Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/Untitled%201.png)
+![Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/htf-structure.png](Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/htf-structure.png)
 
 # Environment
 
