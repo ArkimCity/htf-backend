@@ -134,12 +134,17 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 ![Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/__2021-02-22_112106.jpg](Home%20Tech%20Friends%20209d35adf5e44d79aa1fd297c8f8fc8d/__2021-02-22_112106.jpg)
 
 # Demonstration
-
+## 사용자 환경
 ![demo/0.gif](demo/0.gif)
+## 센서 데이터 표현부
 ![demo/1.gif](demo/1.gif)
+## 실제 센서
 ![demo/2.gif](demo/2.gif)
+## 3D 표현부
 ![demo/3.gif](demo/3.gif)
+## 채팅 서버
 ![demo/4.gif](demo/4.gif)
+## 구독 서비스 
 ![demo/5.gif](demo/5.gif)
 
 # Getting started
