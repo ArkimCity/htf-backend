@@ -12,15 +12,7 @@ IoT란 Internet of Things의 준말로 사물끼리 인터넷으로 연결돼 �
 
 # Team
 
-권오민
-
-김민건
-
-김성호
-
-김재웅
-
-김창훈
+권오민 / 김민건 / 김성호 / 김재웅 / 김창훈
 
 # Architecture
 
